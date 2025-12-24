@@ -72,7 +72,7 @@
         .price-badge { color: var(--accent); font-weight: 800; font-size: 1.2rem; }
         .old-price { text-decoration: line-through; color: #888; font-size: 0.9rem; margin-right: 8px; }
 
-        .btn { background: var(--accent); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; border: none; }
+        .btn { background: var(--accent); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(198, 29, 35, 0.4); }
         .btn-whatsapp { background: #25D366; }
 
@@ -92,6 +92,16 @@
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
 
         footer { background: var(--primary); color: white; padding: 50px 0; text-align: center; margin-top: 60px; }
+
+        /* --- CART SYSTEM STYLES --- */
+        .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; padding: 15px 30px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); cursor: pointer; z-index: 1001; font-weight: 800; font-size: 1.1rem; border: 3px solid white; transition: 0.3s; }
+        .cart-float:hover { transform: scale(1.05); }
+        
+        #cart-sidebar { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 1002; padding: 30px; display: flex; flex-direction: column; }
+        #cart-sidebar.active { right: 0; }
+        #cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .remove-item { color: #ff0000; cursor: pointer; font-weight: bold; border: none; background: none; }
     </style>
 </head>
 <body>
@@ -171,18 +181,18 @@
                         <tr><th>Test Name</th><th>MRP</th><th>Our Price</th><th>Action</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>Complete Blood Count (CBC)</td><td><span class="old-price">₹350</span></td><td><span class="price-badge">₹249</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Complete%20Blood%20Count%20(CBC)%20at%20₹249" class="btn">Book</a></td></tr>
-                        <tr><td>Kidney Function Test (KFT)</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹399</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Kidney%20Function%20Test%20(KFT)%20at%20₹399" class="btn">Book</a></td></tr>
-                        <tr><td>Liver Function Test (LFT)</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹399</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Liver%20Function%20Test%20(LFT)%20at%20₹399" class="btn">Book</a></td></tr>
-                        <tr><td>Lipid Profile</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹399</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Lipid%20Profile%20at%20₹399" class="btn">Book</a></td></tr>
-                        <tr><td>HbA1c</td><td><span class="old-price">₹450</span></td><td><span class="price-badge">₹349</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20HbA1c%20at%20₹349" class="btn">Book</a></td></tr>
-                        <tr><td>Vitamin D</td><td><span class="old-price">₹650</span></td><td><span class="price-badge">₹599</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Vitamin%20D%20at%20₹599" class="btn">Book</a></td></tr>
-                        <tr><td>Vitamin B12</td><td><span class="old-price">₹600</span></td><td><span class="price-badge">₹549</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Vitamin%20B12%20at%20₹549" class="btn">Book</a></td></tr>
-                        <tr><td>Thyroid Profile (T3, T4, TSH)</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹449</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Thyroid%20Profile%20at%20₹449" class="btn">Book</a></td></tr>
-                        <tr><td>Iron Studies</td><td><span class="old-price">₹550</span></td><td><span class="price-badge">₹499</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Iron%20Studies%20at%20₹499" class="btn">Book</a></td></tr>
-                        <tr><td>HIV, HCV, HBsAg Panel</td><td><span class="old-price">₹950</span></td><td><span class="price-badge">₹499</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20HIV%20Panel%20at%20₹499" class="btn">Book</a></td></tr>
-                        <tr><td>Urine Complete</td><td><span class="old-price">₹249</span></td><td><span class="price-badge">₹149</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Urine%20Complete%20at%20₹149" class="btn">Book</a></td></tr>
-                        <tr><td>Blood Group</td><td><span class="old-price">₹180</span></td><td><span class="price-badge">₹149</span></td><td><a href="https://wa.me/918209746239?text=I%20want%20to%20book%20Blood%20Group%20at%20₹149" class="btn">Book</a></td></tr>
+                        <tr><td>Complete Blood Count (CBC)</td><td><span class="old-price">₹350</span></td><td><span class="price-badge">₹249</span></td><td><button onclick="addToCart('CBC', 249)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Kidney Function Test (KFT)</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹399</span></td><td><button onclick="addToCart('KFT', 399)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Liver Function Test (LFT)</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹399</span></td><td><button onclick="addToCart('LFT', 399)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Lipid Profile</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹399</span></td><td><button onclick="addToCart('Lipid Profile', 399)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>HbA1c</td><td><span class="old-price">₹450</span></td><td><span class="price-badge">₹349</span></td><td><button onclick="addToCart('HbA1c', 349)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Vitamin D</td><td><span class="old-price">₹650</span></td><td><span class="price-badge">₹599</span></td><td><button onclick="addToCart('Vitamin D', 599)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Vitamin B12</td><td><span class="old-price">₹600</span></td><td><span class="price-badge">₹549</span></td><td><button onclick="addToCart('Vitamin B12', 549)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Thyroid Profile (T3, T4, TSH)</td><td><span class="old-price">₹500</span></td><td><span class="price-badge">₹449</span></td><td><button onclick="addToCart('Thyroid Profile', 449)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Iron Studies</td><td><span class="old-price">₹550</span></td><td><span class="price-badge">₹499</span></td><td><button onclick="addToCart('Iron Studies', 499)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>HIV, HCV, HBsAg Panel</td><td><span class="old-price">₹950</span></td><td><span class="price-badge">₹499</span></td><td><button onclick="addToCart('HIV Panel', 499)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Urine Complete</td><td><span class="old-price">₹249</span></td><td><span class="price-badge">₹149</span></td><td><button onclick="addToCart('Urine Complete', 149)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>Blood Group</td><td><span class="old-price">₹180</span></td><td><span class="price-badge">₹149</span></td><td><button onclick="addToCart('Blood Group', 149)" class="btn">Add to Cart</button></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -196,17 +206,17 @@
                         <tr><th>Code</th><th>No.</th><th>Tests Included Details</th><th>MRP</th><th>Offer Price</th><th>Booking</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>PL1461</td><td>1</td><td>Blood Sugar Fasting, Cholesterol, Triglycerieds, SGOT, SGPT, OT-PT Ratio, Urea, BUN, Creatinine, BUN-Creatinine Ratio, Thyroid (T3,T4,TSH)</td><td><span class="old-price">₹1350</span></td><td><span class="price-badge">₹599</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%201%20(Code:%20PL1461)%20Price:%20₹599" class="btn">Book</a></td></tr>
-                        <tr><td>PL251C</td><td>2</td><td>CBC, Blood Sugar Fasting, HbA1c, Cholesterol, Triglycerides, SGOT, SGPT, Uric Acid, Creatinine</td><td><span class="old-price">₹1480</span></td><td><span class="price-badge">₹849</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%202%20(Code:%20PL251C)%20Price:%20₹849" class="btn">Book</a></td></tr>
-                        <tr><td>PL146B</td><td>3</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile (T3,T4,TSH)</td><td><span class="old-price">₹1678</span></td><td><span class="price-badge">₹899</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%203%20(Code:%20PL146B)%20Price:%20₹899" class="btn">Book</a></td></tr>
-                        <tr><td>PL146C</td><td>4</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c</td><td><span class="old-price">₹2336</span></td><td><span class="price-badge">₹1379</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%204%20(Code:%20PL146C)%20Price:%20₹1379" class="btn">Book</a></td></tr>
-                        <tr><td>PL146D</td><td>5</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-B12</td><td><span class="old-price">₹2716</span></td><td><span class="price-badge">₹1649</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%205%20(Code:%20PL146D)%20Price:%20₹1649" class="btn">Book</a></td></tr>
-                        <tr><td>PL146E</td><td>6</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D</td><td><span class="old-price">₹2816</span></td><td><span class="price-badge">₹1849</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%206%20(Code:%20PL146E)%20Price:%20₹1849" class="btn">Book</a></td></tr>
-                        <tr><td>SP494</td><td>7</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, CBC, HbA1c, Vitamin-B12, Vitamin-D, Iron Studies</td><td><span class="old-price">₹3115</span></td><td><span class="price-badge">₹2200</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%207%20(Code:%20SP494)%20Price:%20₹2200" class="btn">Book</a></td></tr>
-                        <tr><td>PL146F</td><td>8</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, HbA1c, Vitamin-D, Vitamin-B12, Iron Studies</td><td><span class="old-price">₹4214</span></td><td><span class="price-badge">₹2399</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%208%20(Code:%20PL146F)%20Price:%20₹2399" class="btn">Book</a></td></tr>
-                        <tr><td>PL146T</td><td>9</td><td><b>Female Special:</b> CBC, ESR, Sugar Fasting, Lipid Profile, LFT, KFT, FSH Harmon, Prolactin, Thyroid Profile, Urine R/M</td><td><span class="old-price">₹4415</span></td><td><span class="price-badge">₹2499</span></td><td><a href="https://wa.me/918209746239?text=Book%20Female%20Special%20Package%209%20(Code:%20PL146T)%20Price:%20₹2499" class="btn">Book</a></td></tr>
-                        <tr><td>PL146G</td><td>10</td><td>CBC, ESR, Sugar Fasting, HbA1c, Lipid Profile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE Total, Thyroid Profile, B12, Vit-D, Urine R/M</td><td><span class="old-price">₹4940</span></td><td><span class="price-badge">₹3200</span></td><td><a href="https://wa.me/918209746239?text=Book%20Package%2010%20(Code:%20PL146G)%20Price:%20₹3200" class="btn">Book</a></td></tr>
-                        <tr><td>PL146R</td><td>11</td><td><b>Executive:</b> CBC, ESR, HbA1c, Lipid Profile, HsCRP, LFT, KFT, Iron Studies, RF, CRP, Thyroid Profile, Vitamin B12, Vitamin-D, Folic Acid, Urine Routine, Urine Culture</td><td><span class="old-price">₹7498</span></td><td><span class="price-badge">₹3599</span></td><td><a href="https://wa.me/918209746239?text=Book%20Executive%20Package%2011%20(Code:%20PL146R)%20Price:%20₹3599" class="btn">Book</a></td></tr>
+                        <tr><td>PL1461</td><td>1</td><td>Blood Sugar Fasting, Cholesterol, Triglycerieds, SGOT, SGPT, OT-PT Ratio, Urea, BUN, Creatinine, BUN-Creatinine Ratio, Thyroid (T3,T4,TSH)</td><td><span class="old-price">₹1350</span></td><td><span class="price-badge">₹599</span></td><td><button onclick="addToCart('Package PL1461', 599)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL251C</td><td>2</td><td>CBC, Blood Sugar Fasting, HbA1c, Cholesterol, Triglycerides, SGOT, SGPT, Uric Acid, Creatinine</td><td><span class="old-price">₹1480</span></td><td><span class="price-badge">₹849</span></td><td><button onclick="addToCart('Package PL251C', 849)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146B</td><td>3</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile (T3,T4,TSH)</td><td><span class="old-price">₹1678</span></td><td><span class="price-badge">₹899</span></td><td><button onclick="addToCart('Package PL146B', 899)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146C</td><td>4</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c</td><td><span class="old-price">₹2336</span></td><td><span class="price-badge">₹1379</span></td><td><button onclick="addToCart('Package PL146C', 1379)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146D</td><td>5</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-B12</td><td><span class="old-price">₹2716</span></td><td><span class="price-badge">₹1649</span></td><td><button onclick="addToCart('Package PL146D', 1649)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146E</td><td>6</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D</td><td><span class="old-price">₹2816</span></td><td><span class="price-badge">₹1849</span></td><td><button onclick="addToCart('Package PL146E', 1849)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>SP494</td><td>7</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, CBC, HbA1c, Vitamin-B12, Vitamin-D, Iron Studies</td><td><span class="old-price">₹3115</span></td><td><span class="price-badge">₹2200</span></td><td><button onclick="addToCart('Package SP494', 2200)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146F</td><td>8</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, HbA1c, Vitamin-D, Vitamin-B12, Iron Studies</td><td><span class="old-price">₹4214</span></td><td><span class="price-badge">₹2399</span></td><td><button onclick="addToCart('Package PL146F', 2399)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146T</td><td>9</td><td><b>Female Special:</b> CBC, ESR, Sugar Fasting, Lipid Profile, LFT, KFT, FSH Harmon, Prolactin, Thyroid Profile, Urine R/M</td><td><span class="old-price">₹4415</span></td><td><span class="price-badge">₹2499</span></td><td><button onclick="addToCart('Female Special PL146T', 2499)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146G</td><td>10</td><td>CBC, ESR, Sugar Fasting, HbA1c, Lipid Profile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE Total, Thyroid Profile, B12, Vit-D, Urine R/M</td><td><span class="old-price">₹4940</span></td><td><span class="price-badge">₹3200</span></td><td><button onclick="addToCart('Package PL146G', 3200)" class="btn">Add to Cart</button></td></tr>
+                        <tr><td>PL146R</td><td>11</td><td><b>Executive:</b> CBC, ESR, HbA1c, Lipid Profile, HsCRP, LFT, KFT, Iron Studies, RF, CRP, Thyroid Profile, Vitamin B12, Vitamin-D, Folic Acid, Urine Routine, Urine Culture</td><td><span class="old-price">₹7498</span></td><td><span class="price-badge">₹3599</span></td><td><button onclick="addToCart('Executive PL146R', 3599)" class="btn">Add to Cart</button></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -263,6 +273,23 @@
         </section>
     </main>
 
+    <div class="cart-float" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+
+    <div id="cart-sidebar">
+        <h2 style="margin-top:0;">Your Cart</h2>
+        <div id="cart-items">
+            <p style="color:#888;">Your cart is empty.</p>
+        </div>
+        <div style="padding:20px 0; border-top:2px solid #eee;">
+            <div style="display:flex; justify-content:space-between; font-size:1.3rem; font-weight:800; margin-bottom:20px;">
+                <span>Total:</span>
+                <span>₹<span id="cart-total">0</span></span>
+            </div>
+            <button onclick="checkoutWhatsApp()" class="btn btn-whatsapp" style="width:100%; padding:15px; font-size:1.1rem;">Checkout via WhatsApp</button>
+            <button onclick="toggleCart()" class="btn" style="width:100%; margin-top:10px; background:#444;">Close Cart</button>
+        </div>
+    </div>
+
     <footer>
         <p>© 2025 Patel Diagnostic Udaipur | Official Partner of Redcliffe Labs</p>
     </footer>
@@ -288,6 +315,67 @@
             pagination: { el: ".swiper-pagination" },
             autoplay: { delay: 2500, disableOnInteraction: false },
         });
+
+        /* --- CART LOGIC --- */
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            document.getElementById('cart-sidebar').classList.add('active');
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('active');
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="color:#888;">Your cart is empty.</p>';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach((item, index) => {
+                    cartItemsContainer.innerHTML += `
+                        <div class="cart-item">
+                            <span>${item.name}</span>
+                            <span>₹${item.price} <button class="remove-item" onclick="removeItem(${index})">×</button></span>
+                        </div>
+                    `;
+                });
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartCount.innerText = cart.length;
+            cartTotal.innerText = total;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            let message = "Hello Patel Diagnosis Udaipur! I want to book the following tests:%0A%0A";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name} - ₹${item.price}%0A`;
+                total += item.price;
+            });
+
+            message += `%0A*Total Amount: ₹${total}*%0A%0APlease confirm my booking for Home Collection.`;
+            
+            window.open(`https://wa.me/918209746239?text=${message}`, '_blank');
+        }
     </script>
 </body>
 </html>
