@@ -41,7 +41,10 @@
         }
 
         .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
-        .logo { height: 80px; }
+        
+        /* Styles for the new SVG logo */
+        .logo-wrapper { width: 400px; height: 80px; display: flex; align-items: center; }
+        .bold-text { font-family: "Arial Black", "Inter", sans-serif; font-weight: 900; letter-spacing: -1.5px; }
 
         nav { background: var(--primary); border-radius: 0 0 15px 15px; }
         nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
@@ -80,7 +83,22 @@
     <header>
         <div class="container">
             <div class="top-bar">
-                <img src="321964.jpg" alt="Patel Diagnosis" class="logo">
+                <div class="logo-wrapper">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="height: 100%; width: 100%;">
+                        <g fill="none" stroke="#00AEEF" stroke-linecap="butt">
+                          <path d="M 120,175 A 140,140 0 1,1 480,175" stroke-width="12"/>
+                          <path d="M 120,225 A 140,140 0 1,0 480,225" stroke-width="12"/>
+                          <path d="M 140,175 A 120,120 0 1,1 460,175" stroke-width="3"/>
+                          <path d="M 140,225 A 120,120 0 1,0 460,225" stroke-width="3"/>
+                          <path d="M 130,175 A 130,130 0 1,1 470,175" stroke-width="2"/>
+                          <path d="M 130,225 A 130,130 0 1,0 470,225" stroke-width="2"/>
+                        </g>
+                        <text x="50%" y="212" text-anchor="middle" class="bold-text">
+                          <tspan fill="#003580" font-size="58">Patel Diagnostic </tspan>
+                          <tspan fill="#D21F26" font-size="58">Udaipur</tspan>
+                        </text>
+                    </svg>
+                </div>
                 <a href="https://wa.me/918209746239" class="btn btn-whatsapp">WhatsApp Booking: 8209746239</a>
             </div>
         </div>
@@ -170,7 +188,7 @@
                         <tr><td>SP494</td><td>7</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, CBC, HbA1c, Vitamin-B12, Vitamin-D, Iron Studies</td><td><span class="old-price">₹3115</span></td><td><span class="price-badge">₹2200</span></td><td><a href="https://wa.me/918209746239?text=Package%207" class="btn">Book</a></td></tr>
                         <tr><td>PL146F</td><td>8</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, HbA1c, Vitamin-D, Vitamin-B12, Iron Studies</td><td><span class="old-price">₹4214</span></td><td><span class="price-badge">₹2399</span></td><td><a href="https://wa.me/918209746239?text=Package%208" class="btn">Book</a></td></tr>
                         <tr><td>PL146T</td><td>9</td><td><b>Female Special:</b> CBC, ESR, Sugar Fasting, Lipid Profile, LFT, KFT, FSH Harmon, Prolactin, Thyroid Profile, Urine R/M</td><td><span class="old-price">₹4415</span></td><td><span class="price-badge">₹2499</span></td><td><a href="https://wa.me/918209746239?text=Package%209" class="btn">Book</a></td></tr>
-                        <tr><td>PL146G</td><td>10</td><td>CBC, ESR, Sugar Fasting, HbA1c, Lipid Profile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE Total, Thyroid Profile, B12, Vit-D, Urine R/M</td><td><span class="old-price">₹4940</span></td><td><span class="price-badge">₹3200</span></td><td><a href="https://wa.me/918209746239?text=Package%2010" class="btn">Book</a></td></tr>
+                        <tr><td>PL146G</td><td>10</td><td>CBC, ESR, Sugar Fasting, HbA1c, Lipid Profile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE Total, Thyroid Profile, B12, Vit-D, Urine R/M</td><td><span class="old-price" style="text-decoration: line-through;">₹4940</span></td><td><span class="price-badge">₹3200</span></td><td><a href="https://wa.me/918209746239?text=Package%2010" class="btn">Book</a></td></tr>
                         <tr><td>PL146R</td><td>11</td><td><b>Executive:</b> CBC, ESR, HbA1c, Lipid Profile, HsCRP, LFT, KFT, Iron Studies, RF, CRP, Thyroid Profile, Vitamin B12, Vitamin-D, Folic Acid, Urine Routine, Urine Culture</td><td><span class="old-price">₹7498</span></td><td><span class="price-badge">₹3599</span></td><td><a href="https://wa.me/918209746239?text=Package%2011" class="btn">Book</a></td></tr>
                     </tbody>
                 </table>
