@@ -42,7 +42,7 @@
         }
 
         .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
-        .logo { height: 80px; }
+        .logo-container { width: 220px; height: 110px; display: flex; align-items: center; }
 
         .bold-text {
             font-family: "Arial Black", "Inter", sans-serif;
@@ -113,19 +113,15 @@
         <div class="container">
             <div class="top-bar">
                 <div style="display: flex; align-items: center; gap: 20px;">
-                    <div style="width: 150px;">
-                        <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
-                            <g fill="none" stroke="#00AEEF" stroke-linecap="butt">
-                              <path d="M 120,175 A 140,140 0 1,1 480,175" stroke-width="12"/>
-                              <path d="M 120,225 A 140,140 0 1,0 480,225" stroke-width="12"/>
-                              <path d="M 140,175 A 120,120 0 1,1 460,175" stroke-width="3"/>
-                              <path d="M 140,225 A 120,120 0 1,0 460,225" stroke-width="3"/>
-                              <path d="M 130,175 A 130,130 0 1,1 470,175" stroke-width="2"/>
-                              <path d="M 130,225 A 130,130 0 1,0 470,225" stroke-width="2"/>
-                            </g>
-                            <text x="50%" y="212" text-anchor="middle" class="bold-text">
-                              <tspan fill="#003580" font-size="58">Patel Diagnostic </tspan>
-                              <tspan fill="#D21F26" font-size="58">Udaipur</tspan>
+                    <div class="logo-container">
+                        <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="300" cy="150" r="120" fill="none" stroke="#1da1f2" stroke-width="10"/>
+                            <circle cx="300" cy="150" r="135" fill="none" stroke="#1da1f2" stroke-width="4"/>
+                            <circle cx="300" cy="150" r="105" fill="none" stroke="#1da1f2" stroke-width="4"/>
+                            <rect x="90" y="120" rx="12" ry="12" width="420" height="60" fill="#ffffff"/>
+                            <text x="300" y="162" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="40" font-weight="900">
+                                <tspan fill="#0b4ea2">Patel Diagnostic </tspan>
+                                <tspan fill="#d71920">Udaipur</tspan>
                             </text>
                         </svg>
                     </div>
