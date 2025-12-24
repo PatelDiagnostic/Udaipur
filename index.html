@@ -11,10 +11,9 @@
         * { box-sizing: border-box; } 
 
         :root {
-            /* Colors synchronized with the uploaded logo */
             --color-primary-blue: #0056b3; 
             --color-accent-red: #c61d23;    
-            /* Website background color matched to the logo's cyan background */
+            /* Background color matched to the logo's cyan background */
             --color-logo-bg: #e1f5fe; 
             --color-text-dark: #333;
             --font-title: 'Playfair Display', serif;
@@ -50,21 +49,20 @@
         .compartment { padding: 60px 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
         #home { text-align: center; }
         
-        /* White content cards for readability against the colored background */
         .content-card { background-color: #ffffff; padding: 35px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-top: 5px solid var(--color-primary-blue); margin-bottom: 20px; }
 
         .home-grid { display: flex; justify-content: space-around; margin-top: 40px; gap: 30px; flex-wrap: wrap; }
+        .home-grid > div { background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; flex: 1; min-width: 300px; border-top: 4px solid var(--color-accent-red); }
         
         .table-responsive { overflow-x: auto; margin-top: 30px; }
         .test-catalog, .packages-table { width: 100%; min-width: 800px; border-collapse: separate; border-spacing: 0; background-color: #fff; border-radius: 10px; overflow: hidden; }
         .test-catalog th, .packages-table th { background-color: var(--color-primary-blue); color: #fff; padding: 15px; text-align: left; }
-        .test-catalog td, .packages-table td { border-bottom: 1px solid #eee; padding: 12px 15px; vertical-align: middle; }
+        .test-catalog td, .packages-table td { border-bottom: 1px solid #eee; padding: 12px 15px; }
         
         .original-price { text-decoration: line-through; color: #888; font-size: 0.9em; margin-right: 8px; }
         .selling-price { color: var(--color-accent-red); font-weight: bold; font-size: 1.1em; }
         
         footer { background-color: var(--color-primary-blue); color: #fff; padding: 40px 0; text-align: center; border-top: 5px solid var(--color-accent-red); }
-        .social-link { color: #FFD700; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -94,20 +92,28 @@
     <section id="home" class="compartment">
         <div class="container">
             <h1>The Royal Standard of Home Diagnostics in Udaipur</h1>
-            <p>Reliable and professional <strong>Free Home Blood Collection</strong> across the City of Lakes.</p>
+            <p>Experience the ultimate convenience of Free Home Blood Collection in the City of Lakes.</p>
             <img src="321964.jpg" alt="Patel Diagnostic Logo" style="max-height: 180px; margin: 20px 0;">
             <br>
             <a href="https://wa.me/918209746239" class="primary-cta-large" target="_blank">BOOK YOUR FREE HOME COLLECTION (8209746239)</a>
             
             <div class="home-grid">
-                <div class="content-card" style="flex: 1; min-width: 300px;">
+                <div>
                     <h3>✅ Why Choose Us?</h3>
                     <ul style="list-style: none; padding: 0; text-align: left;">
-                        <li>★ Udaipur’s Local Partner: Dedicated care for your community.</li>
+                        <li>★ Udaipur’s Local Partner: Serving with dedicated care.</li>
                         <li>★ Quality Assurance: Partnered with Redcliffe Labs protocols.</li>
                         <li>★ Affordable Prices: Best value on all tests.</li>
-                        <li>★ Free Home Collection: Safety and comfort at your home.</li>
+                        <li>★ Free Home Collection: Safe and professional service.</li>
                     </ul>
+                </div>
+                <div>
+                    <h3>🚀 How It Works in 3 Steps</h3>
+                    <ol style="text-align: left; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;"><strong>Book Online:</strong> Schedule via WhatsApp or Call.</li>
+                        <li style="margin-bottom: 10px;"><strong>Home Collection:</strong> Expert phlebotomist visits you.</li>
+                        <li style="margin-bottom: 10px;"><strong>Get Reports:</strong> Receive fast digital reports.</li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -123,18 +129,18 @@
                             <tr><th>Test Name</th><th>Original Price</th><th>Our Price</th><th>Action</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Complete Blood Count (CBC)</td><td class="original-price">₹350.00</td><td class="selling-price">₹249.00</td><td><a href="https://wa.me/918209746239?text=Book%20CBC" class="cta-button">Book</a></td></tr>
-                            <tr><td>Kidney Function Test (KFT)</td><td class="original-price">₹500.00</td><td class="selling-price">₹399.00</td><td><a href="https://wa.me/918209746239?text=Book%20KFT" class="cta-button">Book</a></td></tr>
-                            <tr><td>Liver Function Test (LFT)</td><td class="original-price">₹500.00</td><td class="selling-price">₹399.00</td><td><a href="https://wa.me/918209746239?text=Book%20LFT" class="cta-button">Book</a></td></tr>
-                            <tr><td>Lipid Profile</td><td class="original-price">₹500.00</td><td class="selling-price">₹399.00</td><td><a href="https://wa.me/918209746239?text=Book%20Lipid" class="cta-button">Book</a></td></tr>
-                            <tr><td>HbA1c (Diabetes Monitor)</td><td class="original-price">₹450.00</td><td class="selling-price">₹349.00</td><td><a href="https://wa.me/918209746239?text=Book%20HbA1c" class="cta-button">Book</a></td></tr>
-                            <tr><td>Vitamin D</td><td class="original-price">₹650.00</td><td class="selling-price">₹599.00</td><td><a href="https://wa.me/918209746239?text=Book%20VitD" class="cta-button">Book</a></td></tr>
-                            <tr><td>Iron Studies</td><td class="original-price">₹550.00</td><td class="selling-price">₹499.00</td><td><a href="https://wa.me/918209746239?text=Book%20Iron" class="cta-button">Book</a></td></tr>
-                            <tr><td>HIV, HCV, HBsAg Panel</td><td class="original-price">₹950.00</td><td class="selling-price">₹499.00</td><td><a href="https://wa.me/918209746239?text=Book%20HIV%20Panel" class="cta-button">Book</a></td></tr>
-                            <tr><td>Urine Complete</td><td class="original-price">₹249.00</td><td class="selling-price">₹149.00</td><td><a href="https://wa.me/918209746239?text=Book%20Urine" class="cta-button">Book</a></td></tr>
-                            <tr><td>Blood Group</td><td class="original-price">₹180.00</td><td class="selling-price">₹149.00</td><td><a href="https://wa.me/918209746239?text=Book%20BloodGroup" class="cta-button">Book</a></td></tr>
-                            <tr><td>Vitamin B12</td><td class="original-price">₹600.00</td><td class="selling-price">₹549.00</td><td><a href="https://wa.me/918209746239?text=Book%20VitB12" class="cta-button">Book</a></td></tr>
-                            <tr><td>Thyroid Profile</td><td class="original-price">₹500.00</td><td class="selling-price">₹449.00</td><td><a href="https://wa.me/918209746239?text=Book%20Thyroid" class="cta-button">Book</a></td></tr>
+                            <tr><td>Complete Blood Count (CBC)</td><td>₹350.00</td><td class="selling-price">₹249.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Kidney Function Test (KFT)</td><td>₹500.00</td><td class="selling-price">₹399.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Liver Function Test (LFT)</td><td>₹500.00</td><td class="selling-price">₹399.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Lipid Profile</td><td>₹500.00</td><td class="selling-price">₹399.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>HbA1c</td><td>₹450.00</td><td class="selling-price">₹349.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Vitamin D</td><td>₹650.00</td><td class="selling-price">₹599.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Iron Studies</td><td>₹550.00</td><td class="selling-price">₹499.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>HIV, HCV, HBsAg Panel</td><td>₹950.00</td><td class="selling-price">₹499.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Urine Complete</td><td>₹249.00</td><td class="selling-price">₹149.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Blood Group</td><td>₹180.00</td><td class="selling-price">₹149.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Vitamin B12</td><td>₹600.00</td><td class="selling-price">₹549.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
+                            <tr><td>Thyroid Profile</td><td>₹500.00</td><td class="selling-price">₹449.00</td><td><a href="https://wa.me/918209746239" class="cta-button">Book</a></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -145,24 +151,19 @@
     <section id="packages" class="compartment">
         <div class="container">
             <div class="content-card">
-                <h2>🎁 Complete Health Packages</h2>
+                <h2>🎁 Health Packages</h2>
                 <div class="table-responsive">
                     <table class="packages-table">
                         <thead>
-                            <tr><th>Code</th><th>No.</th><th>Included Tests</th><th>MRP</th><th>Offer Price</th><th>Action</th></tr>
+                            <tr><th>Code</th><th>Included Tests</th><th>MRP</th><th>Offer Price</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>PL1461</td><td>1</td><td>Blood Sugar, Cholesterol, Triglycerieds, SGOT, SGPT, OT-PT Ratio, Urea, BUN, Creatinine, BUN-Creatinine Ratio, Thyroid Ptofile</td><td class="original-price">₹1350/-</td><td class="selling-price">₹599/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL1461" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL251C</td><td>2</td><td>CBC, Blood Sugar, HbA1c, Cholesterol, Triglycerides, SGOT, SGPT, Uric Acid, Creatinine</td><td class="original-price">₹1480/-</td><td class="selling-price">₹849/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL251C" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146B</td><td>3</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile</td><td class="original-price">₹1678/-</td><td class="selling-price">₹899/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146B" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146C</td><td>4</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c</td><td class="original-price">₹2336/-</td><td class="selling-price">₹1379/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146C" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146D</td><td>5</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vit-B12</td><td class="original-price">₹2716/-</td><td class="selling-price">₹1649/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146D" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146E</td><td>6</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vit-D</td><td class="original-price">₹2816/-</td><td class="selling-price">₹1849/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146E" class="cta-button">Book</a></td></tr>
-                            <tr><td>SP494</td><td>7</td><td>Blood Sugar, Lipid Profile, LFT, KFT, CBC, HbA1c, Vit-B12, Vit-D, Iron Studies</td><td class="original-price">₹3115/-</td><td class="selling-price">₹2200/-</td><td><a href="https://wa.me/918209746239?text=Book%20SP494" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146F</td><td>8</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, HbA1c, Vit-D, Vit-B12, Iron Studies</td><td class="original-price">₹4214/-</td><td class="selling-price">₹2399/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146F" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146T</td><td>9</td><td>Female- CBC, ESR, Blood Sugar, Lipid Profile, LFT, KFT, FS Harmon, Prolactin, Thyroid Profile, Urine Routine</td><td class="original-price">₹4415/-</td><td class="selling-price">₹2499/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146T" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146G</td><td>10</td><td>CBC, ESR, Blood Sugar, HbA1c, Lipid Pofile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE-Total, Thyroid Profile, Vit-B12, Vit-D, Urine Routine</td><td class="original-price">₹4940/-</td><td class="selling-price">₹3200/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146G" class="cta-button">Book</a></td></tr>
-                            <tr><td>PL146R</td><td>11</td><td>CBC, ESR, Blood Sugar, HbA1c, Lipid Profile, HsCRP, LFT, KFT, Iron Studies, RF, CRP, Thyroid Profile, Vit-B12, Vit-D, IgE Total, Folic Acid, Urine Routine, Urine Culture</td><td class="original-price">₹7498/-</td><td class="selling-price">₹3599/-</td><td><a href="https://wa.me/918209746239?text=Book%20PL146R" class="cta-button">Book</a></td></tr>
+                            <tr><td>PL1461</td><td>Blood Sugar, Cholesterol, Triglycerieds, SGOT, SGPT, OT-PT Ratio, Urea, BUN, Creatinine, BUN-Creatinine Ratio, Thyroid Ptofile</td><td>₹1350/-</td><td class="selling-price">₹599/-</td></tr>
+                            <tr><td>PL251C</td><td>CBC, Blood Sugar, HbA1c, Cholesterol, Triglycerides, SGOT, SGPT, Uric Acid, Creatinine</td><td>₹1480/-</td><td class="selling-price">₹849/-</td></tr>
+                            <tr><td>PL146B</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile</td><td>₹1678/-</td><td class="selling-price">₹899/-</td></tr>
+                            <tr><td>PL146C</td><td>Blood Sugar, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c</td><td>₹2336/-</td><td class="selling-price">₹1379/-</td></tr>
+                            <tr><td>PL146F</td><td>Sugar, Lipid, LFT, KFT, Thyroid, Urine, CBC, ESR, HbA1c, Vit-D, Vit-B12, Iron</td><td>₹4214/-</td><td class="selling-price">₹2399/-</td></tr>
+                            <tr><td>PL146R</td><td>CBC, ESR, Sugar, HbA1c, Lipid, HsCRP, LFT, KFT, Iron, RF, CRP, Thyroid, Vit-B12, Vit-D, IgE Total, Folic Acid, Urine Routine & Culture</td><td>₹7498/-</td><td class="selling-price">₹3599/-</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -173,17 +174,26 @@
     <section id="service-areas" class="compartment">
         <div class="container">
             <div class="content-card">
-                <h2>📍 Service Area</h2>
-                <div style="display: flex; gap: 30px; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 250px;">
-                        <h3>Walled City & Modern Hubs</h3>
-                        <p>Hiran Magri (1-14), Shobhagpura, Bhupalpura, Ashok Nagar, Fatehpura, Chandpole, Surajpole, Delhi Gate, Bapu Bazar.</p>
+                <h2>📍 Complete Service Area</h2>
+                <div class="home-grid" style="border:none; box-shadow:none; padding:0;">
+                    <div style="border-top:none; box-shadow:none;">
+                        <h3>City & Modern Hubs</h3>
+                        <p>Jagdish Chowk, Chandpole, Surajpole, Delhi Gate, Hiran Magri (1-14), Shobhagpura, Bhupalpura, Ashok Nagar, Fatehpura, Panchwati, Saheli Nagar.</p>
                     </div>
-                    <div style="flex: 1; min-width: 250px;">
+                    <div style="border-top:none; box-shadow:none;">
                         <h3>Rural & Greater Udaipur</h3>
-                        <p>Alsigarh, Gogunda, Mavli, Bhinder, Kherwara, Rishabhdeo, Salumbar, Dabok Airport, Sakroda, Fatehnagar.</p>
+                        <p>Alsigarh, Ubeshwar Ji, Nandeshwar, Kailashpuri, Sisarma, Kavita, Amberi, Jhadol, Gogunda, Mavli, Vallabhnagar, Bhinder, Kherwara, Rishabhdeo, Salumbar, Zawar Mines, Dabok Airport, Sakroda, Gudli, Fatehnagar.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us" class="compartment">
+        <div class="container">
+            <div class="content-card">
+                <h2>👨‍⚕️ Our Promise: Trusted Diagnostics</h2>
+                <p><strong>Patel Diagnostic Udaipur</strong> was founded with a mission to make high-quality lab testing accessible and convenient for every resident. We provide professional Home Blood Collection Services partnered with Redcliffe Labs to deliver world-class accuracy right here in Udaipur.</p>
             </div>
         </div>
     </section>
@@ -191,10 +201,9 @@
     <section id="contact-us" class="compartment">
         <div class="container" style="text-align: center;">
             <div class="content-card">
-                <h2>📞 Connect with Patel Diagnostic</h2>
-                <p><strong>Primary Contact:</strong> <a href="tel:+918209746239">8209746239</a></p>
-                <p><strong>Secondary Contact:</strong> <a href="tel:+917733023857">7733023857</a></p>
-                <p><strong>Instagram:</strong> <a class="social-link" href="https://www.instagram.com/patel_diagnostic_udaipur" target="_blank" style="color: var(--color-primary-blue);">@patel_diagnostic_udaipur</a></p>
+                <h2>📞 Contact Us</h2>
+                <p><strong>Primary:</strong> 8209746239 | <strong>Secondary:</strong> 7733023857</p>
+                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/patel_diagnostic_udaipur" target="_blank">@patel_diagnostic_udaipur</a></p>
                 <p><strong>Address:</strong> Titaradi Near St.Marry School, Udaipur, Rajasthan</p>
             </div>
         </div>
@@ -204,6 +213,5 @@
     <footer>
         <p>© 2025 Patel Diagnostic Udaipur | Partnered with Redcliffe Labs</p>
     </footer>
-
 </body>
 </html>
