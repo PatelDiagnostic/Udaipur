@@ -93,10 +93,13 @@
 
         footer { background: var(--primary); color: white; padding: 50px 0; text-align: center; margin-top: 60px; }
 
-        /* --- LOCKED CART SYSTEM STYLES --- */
+        /* Floating Buttons */
         .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; padding: 15px 30px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); cursor: pointer; z-index: 1001; font-weight: 800; font-size: 1.1rem; border: 3px solid white; transition: 0.3s; }
         .cart-float:hover { transform: scale(1.05); }
         
+        .call-float { position: fixed; bottom: 30px; left: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); text-decoration: none; z-index: 1001; font-weight: 800; font-size: 1.1rem; border: 3px solid white; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .call-float:hover { transform: scale(1.05); background: #004494; }
+
         #cart-sidebar { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 1002; padding: 30px; display: flex; flex-direction: column; }
         #cart-sidebar.active { right: 0; }
         #cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; }
@@ -109,21 +112,26 @@
     <header>
         <div class="container">
             <div class="top-bar">
-                <div style="width: 150px;">
-                    <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="none" stroke="#00AEEF" stroke-linecap="butt">
-                          <path d="M 120,175 A 140,140 0 1,1 480,175" stroke-width="12"/>
-                          <path d="M 120,225 A 140,140 0 1,0 480,225" stroke-width="12"/>
-                          <path d="M 140,175 A 120,120 0 1,1 460,175" stroke-width="3"/>
-                          <path d="M 140,225 A 120,120 0 1,0 460,225" stroke-width="3"/>
-                          <path d="M 130,175 A 130,130 0 1,1 470,175" stroke-width="2"/>
-                          <path d="M 130,225 A 130,130 0 1,0 470,225" stroke-width="2"/>
-                        </g>
-                        <text x="50%" y="212" text-anchor="middle" class="bold-text">
-                          <tspan fill="#003580" font-size="58">Patel Diagnostic </tspan>
-                          <tspan fill="#D21F26" font-size="58">Udaipur</tspan>
-                        </text>
-                    </svg>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 150px;">
+                        <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" stroke="#00AEEF" stroke-linecap="butt">
+                              <path d="M 120,175 A 140,140 0 1,1 480,175" stroke-width="12"/>
+                              <path d="M 120,225 A 140,140 0 1,0 480,225" stroke-width="12"/>
+                              <path d="M 140,175 A 120,120 0 1,1 460,175" stroke-width="3"/>
+                              <path d="M 140,225 A 120,120 0 1,0 460,225" stroke-width="3"/>
+                              <path d="M 130,175 A 130,130 0 1,1 470,175" stroke-width="2"/>
+                              <path d="M 130,225 A 130,130 0 1,0 470,225" stroke-width="2"/>
+                            </g>
+                            <text x="50%" y="212" text-anchor="middle" class="bold-text">
+                              <tspan fill="#003580" font-size="58">Patel Diagnostic </tspan>
+                              <tspan fill="#D21F26" font-size="58">Udaipur</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                    <div style="font-size: 1.2rem; font-weight: 600; color: var(--primary); border-left: 2px solid #ccc; padding-left: 15px; margin-left: 10px;">
+                        A Home Blood Collection Service Provider
+                    </div>
                 </div>
                 <a href="https://wa.me/918209746239" class="btn btn-whatsapp">WhatsApp Booking: 8209746239</a>
             </div>
@@ -284,6 +292,7 @@
         </section>
     </main>
 
+    <a href="tel:8209746239" class="call-float">📞 Call Now</a>
     <div class="cart-float" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
 
     <div id="cart-sidebar">
@@ -327,7 +336,7 @@
             autoplay: { delay: 2500, disableOnInteraction: false },
         });
 
-        /* --- CART LOGIC --- */
+        /* --- CART LOGIC (LOCKED) --- */
         let cart = [];
 
         function addToCart(name, price) {
