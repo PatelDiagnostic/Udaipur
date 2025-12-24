@@ -93,7 +93,7 @@
 
         footer { background: var(--primary); color: white; padding: 50px 0; text-align: center; margin-top: 60px; }
 
-        /* --- CART SYSTEM STYLES --- */
+        /* --- LOCKED CART SYSTEM STYLES --- */
         .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; padding: 15px 30px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); cursor: pointer; z-index: 1001; font-weight: 800; font-size: 1.1rem; border: 3px solid white; transition: 0.3s; }
         .cart-float:hover { transform: scale(1.05); }
         
@@ -262,6 +262,17 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h3 style="text-align: center; margin-bottom: 25px;">📩 Quick Inquiry</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" id="inq_name" placeholder="Your Name*" style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;">
+                    <input type="tel" id="inq_contact" placeholder="Contact Number*" style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;">
+                    <input type="text" id="inq_address" placeholder="Address*" style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;">
+                    <textarea id="inq_message" placeholder="Message*" rows="3" style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; resize: none;"></textarea>
+                    <button onclick="sendInquiry()" class="btn" style="width: 100%; padding: 15px; font-size: 1.1rem;">Submit Inquiry via WhatsApp</button>
+                </div>
+            </div>
         </section>
 
         <section id="contact" class="glass-card" style="text-align:center;" data-aos="fade-up">
@@ -375,6 +386,28 @@
             message += `%0A*Total Amount: ₹${total}*%0A%0APlease confirm my booking for Home Collection.`;
             
             window.open(`https://wa.me/918209746239?text=${message}`, '_blank');
+        }
+
+        /* --- INQUIRY FORM LOGIC --- */
+        function sendInquiry() {
+            const name = document.getElementById('inq_name').value;
+            const contact = document.getElementById('inq_contact').value;
+            const address = document.getElementById('inq_address').value;
+            const message = document.getElementById('inq_message').value;
+
+            if (!name || !contact || !address || !message) {
+                alert("Please fill all fields marked with *");
+                return;
+            }
+
+            let whatsappMsg = "Hello Patel Diagnosis Udaipur!%0A" + 
+                              "*New Quick Inquiry*%0A%0A" + 
+                              "*Name:* " + encodeURIComponent(name) + "%0A" + 
+                              "*Contact:* " + encodeURIComponent(contact) + "%0A" + 
+                              "*Address:* " + encodeURIComponent(address) + "%0A" + 
+                              "*Message:* " + encodeURIComponent(message);
+
+            window.open(`https://wa.me/918209746239?text=${whatsappMsg}`, '_blank');
         }
     </script>
 </body>
