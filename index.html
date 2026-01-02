@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patel Diagnosis Udaipur | Modern Home Diagnostics</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -27,11 +27,11 @@
             color: var(--text-main); 
             background-color: var(--logo-bg); 
             line-height: 1.7;
-            min-width: 1200px;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
-        .container { width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .container { width: 95%; max-width: 1200px; margin: 0 auto; padding: 0 10px; }
 
         header { 
             position: sticky; top: 0; 
@@ -42,64 +42,96 @@
         }
 
         .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
-        .logo-container { width: 220px; height: 110px; display: flex; align-items: center; }
+        .logo-container { width: 180px; height: auto; display: flex; align-items: center; }
 
-        nav { background: var(--primary); border-radius: 0 0 15px 15px; }
+        nav.desktop-nav { background: var(--primary); display: block; border-radius: 0 0 15px 15px; }
         nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
-        nav ul li a { color: white; text-decoration: none; padding: 15px 25px; display: block; font-weight: 600; transition: 0.3s; }
+        nav ul li a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; transition: 0.3s; }
         nav ul li a:hover { background: var(--accent); }
+
+        .menu-btn { display: none; font-size: 24px; cursor: pointer; color: var(--primary); border: none; background: none; }
+        .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: white; z-index: 2000; transition: 0.4s; padding: 20px; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
+        .side-menu.active { left: 0; }
+        .side-menu ul { list-style: none; padding: 0; margin-top: 50px; }
+        .side-menu ul li a { display: block; padding: 15px; text-decoration: none; color: var(--primary); font-weight: 600; border-bottom: 1px solid #eee; }
+        .close-menu { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; }
+        
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
+        .overlay.active { display: block; }
 
         .hero { padding: 40px 0; text-align: center; }
         .hero-banner-box { width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 8px solid white; margin-bottom: 30px; }
-        .hero-banner-box img { width: 100%; display: block; }
+        .hero-banner-box img { width: 100%; display: block; height: auto; }
 
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
         .feature-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 6px solid var(--accent); }
 
         .glass-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); margin-bottom: 40px; }
 
-        .test-grid-wrapper { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 25px; }
+        .test-grid-wrapper { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 25px; }
         .test-ui-card { background: white; border: 1px solid #eee; border-radius: 15px; padding: 20px 15px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: 0.2s; }
-        .test-ui-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
         .test-icon-circle { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 15px; }
         .test-ui-name { font-size: 0.85rem; font-weight: 600; color: #333; height: 45px; display: flex; align-items: center; margin-bottom: 15px; line-height: 1.2; }
         .test-ui-btn { width: 100%; background: #0070c0; color: white; border: none; padding: 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
 
-        .table-wrapper { overflow-x: auto; border-radius: 15px; background: white; margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: var(--primary); color: white; padding: 20px; text-align: left; }
-        td { padding: 18px; border-bottom: 1px solid #eee; }
-
-        .price-badge { color: var(--accent); font-weight: 800; font-size: 1.2rem; }
-        .old-price { text-decoration: line-through; color: #888; font-size: 0.9rem; margin-right: 8px; }
+        .package-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-top: 30px; }
+        .package-card { background: white; border-radius: 20px; border: 1px solid #eef2f6; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .package-header { background: linear-gradient(135deg, var(--primary), #003d82); color: white; padding: 20px; position: relative; }
+        .package-code { background: var(--accent); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; position: absolute; top: 20px; right: 20px; }
+        .package-body { padding: 25px; flex-grow: 1; }
+        .package-tests { font-size: 0.9rem; color: #555; margin-bottom: 20px; min-height: 100px; line-height: 1.5; }
+        .package-footer { padding: 20px 25px; background: #f9f9f9; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .price-badge { color: var(--accent); font-weight: 800; font-size: 1.4rem; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 0.9rem; margin-right: 5px; }
 
         .btn { background: var(--accent); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
         .btn-whatsapp { background: #25D366; }
 
-        .area-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .area-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .area-box { background: #f0f7ff; padding: 25px; border-radius: 15px; border-left: 6px solid var(--primary); height: 100%; }
 
         .swiper { width: 100%; padding: 20px 0 50px 0; }
-        .swiper-slide { width: 350px; height: 350px; border-radius: 20px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .swiper-slide { width: 300px; height: 300px; border-radius: 20px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        #cart-sidebar { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 1002; padding: 30px; display: flex; flex-direction: column; }
+        #cart-sidebar { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2001; padding: 30px; display: flex; flex-direction: column; }
         #cart-sidebar.active { right: 0; }
-        #cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; padding-right: 10px; }
+        #cart-items { flex-grow: 1; overflow-y: auto; margin-bottom: 20px; }
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
-        .remove-item { color: #ff0000; cursor: pointer; font-weight: bold; border: none; background: none; }
 
         .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; padding: 15px 30px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); cursor: pointer; z-index: 1001; font-weight: 800; border: 3px solid white; }
         .call-float { position: fixed; bottom: 30px; left: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; z-index: 1001; font-weight: 800; border: 3px solid white; }
         footer { background: var(--primary); color: white; padding: 50px 0; text-align: center; margin-top: 60px; }
+
+        @media (max-width: 768px) {
+            .desktop-nav { display: none !important; }
+            .menu-btn { display: block; }
+            #cart-sidebar { width: 100%; right: -100%; }
+        }
     </style>
 </head>
 <body>
+
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+    
+    <div class="side-menu" id="sideMenu">
+        <span class="close-menu" onclick="toggleMenu()">&times;</span>
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">Why Choose Us</a></li>
+            <li><a href="#tests" onclick="toggleMenu()">Individual Tests</a></li>
+            <li><a href="#packages" onclick="toggleMenu()">Health Packages</a></li>
+            <li><a href="#service-areas" onclick="toggleMenu()">Service Area</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
 
     <header>
         <div class="container">
             <div class="top-bar">
                 <div style="display: flex; align-items: center; gap: 20px;">
+                    <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
                     <div class="logo-container">
                         <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="300" cy="150" r="120" fill="none" stroke="#1da1f2" stroke-width="10"/>
@@ -112,14 +144,11 @@
                             </text>
                         </svg>
                     </div>
-                    <div style="font-size: 1.2rem; font-weight: 600; color: var(--primary); border-left: 2px solid #ccc; padding-left: 15px;">
-                        A Home Blood Collection Service Provider in Udaipur
-                    </div>
                 </div>
-                <a href="https://wa.me/918209746239" class="btn btn-whatsapp">WhatsApp Booking: 8209746239</a>
+                <a href="https://wa.me/918209746239" class="btn btn-whatsapp">WhatsApp: 8209746239</a>
             </div>
         </div>
-        <nav>
+        <nav class="desktop-nav">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Why Choose Us</a></li>
@@ -169,26 +198,7 @@
 
         <section id="packages" class="glass-card" data-aos="fade-up">
             <h2>🎁 Our Top Health Packages</h2>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr><th>Code</th><th>No.</th><th>Tests Included Details</th><th>MRP</th><th>Offer Price</th><th>Booking</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>PL1461</td><td>1</td><td>Blood Sugar Fasting, Cholesterol, Triglycerieds, SGOT, SGPT, OT-PT Ratio, Urea, BUN, Creatinine, BUN-Creatinine Ratio, Thyroid (T3,T4,TSH)</td><td><span class="old-price">₹1350</span></td><td><span class="price-badge">₹599</span></td><td><button onclick="addToCart('Package PL1461', 599)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL251C</td><td>2</td><td>CBC, Blood Sugar Fasting, HbA1c, Cholesterol, Triglycerides, SGOT, SGPT, Uric Acid, Creatinine</td><td><span class="old-price">₹1480</span></td><td><span class="price-badge">₹849</span></td><td><button onclick="addToCart('Package PL251C', 849)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146B</td><td>3</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile (T3,T4,TSH)</td><td><span class="old-price">₹1678</span></td><td><span class="price-badge">₹899</span></td><td><button onclick="addToCart('Package PL146B', 899)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146C</td><td>4</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c</td><td><span class="old-price">₹2336</span></td><td><span class="price-badge">₹1379</span></td><td><button onclick="addToCart('Package PL146C', 1379)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146D</td><td>5</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-B12</td><td><span class="old-price">₹2716</span></td><td><span class="price-badge">₹1649</span></td><td><button onclick="addToCart('Package PL146D', 1649)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146E</td><td>6</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D</td><td><span class="old-price">₹2816</span></td><td><span class="price-badge">₹1849</span></td><td><button onclick="addToCart('Package PL146E', 1849)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>SP494</td><td>7</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, CBC, HbA1c, Vitamin-B12, Vitamin-D, Iron Studies</td><td><span class="old-price">₹3115</span></td><td><span class="price-badge">₹2200</span></td><td><button onclick="addToCart('Package SP494', 2200)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146F</td><td>8</td><td>Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, HbA1c, Vitamin-D, Vitamin-B12, Iron Studies</td><td><span class="old-price">₹4214</span></td><td><span class="price-badge">₹2399</span></td><td><button onclick="addToCart('Package PL146F', 2399)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146T</td><td>9</td><td><b>Female Special:</b> CBC, ESR, Sugar Fasting, Lipid Profile, LFT, KFT, FSH Harmon, Prolactin, Thyroid Profile, Urine R/M</td><td><span class="old-price">₹4415</span></td><td><span class="price-badge">₹2499</span></td><td><button onclick="addToCart('Female Special PL146T', 2499)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146G</td><td>10</td><td>CBC, ESR, Sugar Fasting, HbA1c, Lipid Profile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE Total, Thyroid Profile, B12, Vit-D, Urine R/M</td><td><span class="old-price">₹4940</span></td><td><span class="price-badge">₹3200</span></td><td><button onclick="addToCart('Package PL146G', 3200)" class="btn">Add to Cart</button></td></tr>
-                        <tr><td>PL146R</td><td>11</td><td><b>Executive:</b> CBC, ESR, HbA1c, Lipid Profile, HsCRP, LFT, KFT, Iron Studies, RF, CRP, Thyroid Profile, Vitamin B12, Vitamin-D, Folic Acid, Urine Routine, Urine Culture</td><td><span class="old-price">₹7498</span></td><td><span class="price-badge">₹3599</span></td><td><button onclick="addToCart('Executive PL146R', 3599)" class="btn">Add to Cart</button></td></tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="package-catalog-grid" id="package-grid"></div>
         </section>
 
         <section id="service-areas" class="glass-card" data-aos="fade-up">
@@ -213,14 +223,7 @@
             <h2>📸 Facility Gallery</h2>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="1.png"></div><div class="swiper-slide"><img src="2.png"></div>
-                    <div class="swiper-slide"><img src="3.png"></div><div class="swiper-slide"><img src="4.png"></div>
-                    <div class="swiper-slide"><img src="5.png"></div><div class="swiper-slide"><img src="6.png"></div>
-                    <div class="swiper-slide"><img src="7.png"></div><div class="swiper-slide"><img src="8.png"></div>
-                    <div class="swiper-slide"><img src="9.png"></div><div class="swiper-slide"><img src="10.png"></div>
-                    <div class="swiper-slide"><img src="11.png"></div><div class="swiper-slide"><img src="12.png"></div>
-                    <div class="swiper-slide"><img src="13.png"></div><div class="swiper-slide"><img src="14.png"></div>
-                    <div class="swiper-slide"><img src="15.png"></div>
+                    <div class="swiper-slide"><img src="1.png"></div><div class="swiper-slide"><img src="2.png"></div><div class="swiper-slide"><img src="3.png"></div><div class="swiper-slide"><img src="4.png"></div><div class="swiper-slide"><img src="5.png"></div><div class="swiper-slide"><img src="6.png"></div><div class="swiper-slide"><img src="7.png"></div><div class="swiper-slide"><img src="8.png"></div><div class="swiper-slide"><img src="9.png"></div><div class="swiper-slide"><img src="10.png"></div><div class="swiper-slide"><img src="11.png"></div><div class="swiper-slide"><img src="12.png"></div><div class="swiper-slide"><img src="13.png"></div><div class="swiper-slide"><img src="14.png"></div><div class="swiper-slide"><img src="15.png"></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -245,13 +248,10 @@
         </section>
     </main>
 
-    <a href="tel:8209746239" class="call-float">📞 Call Now</a>
-    <div class="cart-float" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
-
     <div id="cart-sidebar">
-        <h2>Your Cart</h2>
-        <div id="cart-items"><p style="color:#888;">Your cart is empty.</p></div>
-        <div style="padding:20px 0; border-top:2px solid #eee;">
+        <h2 style="margin-top:0;">Your Selected Tests</h2>
+        <div id="cart-items"></div>
+        <div style="padding-top:20px; border-top:2px solid #eee;">
             <div style="display:flex; justify-content:space-between; font-size:1.3rem; font-weight:800;">
                 <span>Total:</span><span>₹<span id="cart-total">0</span></span>
             </div>
@@ -259,13 +259,53 @@
         </div>
     </div>
 
-    <footer><p>© 2025 Patel Diagnostic Udaipur | Official Partner of Redcliffe Labs</p></footer>
+    <a href="tel:8209746239" class="call-float">📞 Call Now</a>
+    <div class="cart-float" id="cart-trigger" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+
+    <footer><p>© 2026 Patel Diagnostic Udaipur | Official Partner of Redcliffe Labs</p></footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
         new Swiper(".mySwiper", { effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto", loop: true, coverflowEffect: { rotate: 20, depth: 100, modifier: 1, slideShadows: true }, pagination: { el: ".swiper-pagination" }, autoplay: { delay: 2500 } });
+
+        function openCart() {
+            document.getElementById('cart-sidebar').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            window.history.pushState({ cartOpen: true }, "");
+        }
+
+        function closeCart() {
+            document.getElementById('cart-sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            if (!menu.classList.contains('active')) {
+                menu.classList.add('active');
+                overlay.classList.add('active');
+                window.history.pushState({ menuOpen: true }, "");
+            } else {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        }
+
+        window.onpopstate = function(event) {
+            closeCart();
+            document.getElementById('sideMenu').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        };
+
+        function closeAll() {
+            if (document.getElementById('cart-sidebar').classList.contains('active') || 
+                document.getElementById('sideMenu').classList.contains('active')) {
+                history.back();
+            }
+        }
 
         const tests = [
             { name: "Chikungunya IgM Card", icon: "fa-mosquito", bg: "#fff7ed", color: "#c2410c" },
@@ -295,53 +335,79 @@
             { name: "Vitamin D 25 Hydroxy", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c" }
         ];
 
+        const packages = [
+            { code: "PL1461", name: "Full Body Basic", price: 599, old: 1350, tests: "Blood Sugar Fasting, Cholesterol, Triglycerieds, SGOT, SGPT, OT-PT Ratio, Urea, BUN, Creatinine, BUN-Creatinine Ratio, Thyroid (T3,T4,TSH)" },
+            { code: "PL251C", name: "Smart Health Plus", price: 849, old: 1480, tests: "CBC, Blood Sugar Fasting, HbA1c, Cholesterol, Triglycerides, SGOT, SGPT, Uric Acid, Creatinine" },
+            { code: "PL146B", name: "Essential Vital", price: 899, old: 1678, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile (T3,T4,TSH)" },
+            { code: "PL146C", name: "Comprehensive Care", price: 1379, old: 2336, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c" },
+            { code: "PL146D", name: "Advanced Health B12", price: 1649, old: 2716, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-B12" },
+            { code: "PL146E", name: "Advanced Health Vit-D", price: 1849, old: 2816, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D" },
+            { code: "SP494", name: "Smart Plus Complete", price: 2200, old: 3115, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, CBC, HbA1c, Vitamin-B12, Vitamin-D, Iron Studies" },
+            { code: "PL146F", name: "Full Body Platinum", price: 2399, old: 4214, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, HbA1c, Vitamin-D, Vitamin-B12, Iron Studies" },
+            { code: "PL146T", name: "Female Special", price: 2499, old: 4415, tests: "CBC, ESR, Sugar Fasting, Lipid Profile, LFT, KFT, FSH Harmon, Prolactin, Thyroid Profile, Urine R/M" },
+            { code: "PL146G", name: "Full Body Ultra", price: 3200, old: 4940, tests: "CBC, ESR, Sugar Fasting, HbA1c, Lipid Profile, LFT, KFT, Iron Studies, CRP, RF, HsCRP, IgE Total, Thyroid Profile, B12, Vit-D, Urine R/M" },
+            { code: "PL146R", name: "Executive Profile", price: 3599, old: 7498, tests: "CBC, ESR, HbA1c, Lipid Profile, HsCRP, LFT, KFT, Iron Studies, RF, CRP, Thyroid Profile, Vitamin B12, Vitamin-D, Folic Acid, Urine Routine, Urine Culture" }
+        ];
+
         const testGrid = document.getElementById('dynamic-test-grid');
         tests.forEach(test => {
-            testGrid.innerHTML += `<div class="test-ui-card"><div class="test-icon-circle" style="background-color:${test.bg}; color:${test.color};"><i class="fa-solid ${test.icon}"></i></div><div class="test-ui-name">${test.name}</div><button onclick="addToCart('${test.name}', 0)" class="test-ui-btn">Add to Cart</button></div>`;
+            testGrid.innerHTML += `<div class="test-ui-card"><div class="test-icon-circle" style="background:${test.bg}; color:${test.color};"><i class="fa-solid ${test.icon}"></i></div><div class="test-ui-name">${test.name}</div><button onclick="addToCart('${test.name}', 0, '')" class="test-ui-btn">Add to Cart</button></div>`;
+        });
+
+        const pkgGrid = document.getElementById('package-grid');
+        packages.forEach(pkg => {
+            pkgGrid.innerHTML += `
+                <div class="package-card">
+                    <div class="package-header"><span class="package-code">${pkg.code}</span><h3 style="color:white; margin:0;">${pkg.name}</h3></div>
+                    <div class="package-body"><p class="package-tests">${pkg.tests}</p></div>
+                    <div class="package-footer">
+                        <div class="price-stack"><span class="old-price">₹${pkg.old}</span><span class="price-badge">₹${pkg.price}</span></div>
+                        <button onclick="addToCart('${pkg.name}', ${pkg.price}, '${pkg.code}')" class="btn">Book Now</button>
+                    </div>
+                </div>`;
         });
 
         let cart = [];
-        function addToCart(name, price) { cart.push({ name, price }); updateCartUI(); document.getElementById('cart-sidebar').classList.add('active'); }
-        function removeItem(index) { cart.splice(index, 1); updateCartUI(); }
-        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
-        function updateCartUI() {
-            const container = document.getElementById('cart-items');
-            container.innerHTML = cart.length === 0 ? '<p style="color:#888;">Your cart is empty.</p>' : '';
-            cart.forEach((item, i) => { container.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>₹${item.price} <button class="remove-item" onclick="removeItem(${i})">×</button></span></div>`; });
-            document.getElementById('cart-count').innerText = cart.length;
-            document.getElementById('cart-total').innerText = cart.reduce((s, i) => s + i.price, 0);
+        function addToCart(name, price, code) {
+            cart.push({ name, price, code });
+            updateCartUI();
+            openCart();
         }
 
-        function checkoutWhatsApp() {
-            if (cart.length === 0) return alert("Your cart is empty!");
-            let itemsList = cart.map((t, i) => `${i+1}. ${t.name}`).join("\n");
-            let total = document.getElementById('cart-total').innerText;
-            let finalMsg = `Hello Patel Diagnostic! I would like to book the following:\n\n${itemsList}\n\nTotal Amount: ₹${total}`;
-            window.open(`https://wa.me/918209746239?text=${encodeURIComponent(finalMsg)}`, '_blank');
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = cart.length === 0 ? '<p style="color:#888;">Empty</p>' : '';
+            cart.forEach((item, i) => {
+                container.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>₹${item.price} <button onclick="removeItem(${i})" style="color:red; border:none; background:none; cursor:pointer;">×</button></span></div>`;
+            });
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-total').innerText = cart.reduce((s, i) => s + i.price, 0);
         }
 
         function sendInquiry() {
             const name = document.getElementById('inq_name').value;
             const contact = document.getElementById('inq_contact').value;
-            if (!name || !contact) return alert("Please fill Name and Contact");
-            let msg = `Inquiry from ${name}\nContact: ${contact}\nAddress: ${document.getElementById('inq_address').value}\nMessage: ${document.getElementById('inq_message').value}`;
+            if (!name || !contact) return alert("Fill Name and Contact");
+            let msg = `Inquiry: ${name}\nContact: ${contact}\nAddress: ${document.getElementById('inq_address').value}\nMsg: ${document.getElementById('inq_message').value}`;
+            window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) return alert("Empty");
+            let items = cart.map((t, i) => `${i+1}. Name: ${t.name}${t.code ? ', Code: '+t.code : ''}, Price: ₹${t.price}`).join("\n");
+            let total = document.getElementById('cart-total').innerText;
+            let msg = `Booking Request:\n\n${items}\n\nTotal Payable: ₹${total}`;
             window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function chatNow() {
-            window.open("https://wa.me/918209746239?text=Hello%20Patel%20Diagnosis%2C%20I%20want%20to%20know%20more%20about%20your%20home%20collection%20services.", "_blank");
+            window.open("https://wa.me/918209746239", "_blank");
         }
-
-        document.addEventListener('click', function(event) {
-            const cartSidebar = document.getElementById('cart-sidebar');
-            const cartFloat = document.querySelector('.cart-float');
-            const isClickInsideCart = cartSidebar.contains(event.target);
-            const isClickOnCartButton = cartFloat.contains(event.target);
-            const isAddToCartBtn = event.target.tagName === 'BUTTON' && event.target.innerText.toUpperCase() === "ADD TO CART";
-            if (cartSidebar.classList.contains('active') && !isClickInsideCart && !isClickOnCartButton && !isAddToCartBtn) {
-                cartSidebar.classList.remove('active');
-            }
-        });
     </script>
 </body>
 </html>
