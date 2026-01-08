@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Patel Diagnosis Udaipur | Modern Home Diagnostics</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -107,7 +106,12 @@
             .desktop-nav { display: none !important; }
             .menu-btn { display: block; }
             #cart-sidebar { width: 100%; right: -100%; }
+            .feature-grid { grid-template-columns: 1fr; }
         }
+
+        .search-container { margin-top: 15px; margin-bottom: 10px; position: relative; }
+        #testSearch { width: 100%; padding: 18px 20px; border-radius: 12px; border: 2px solid var(--primary); font-family: 'Outfit', sans-serif; font-size: 1.1rem; outline: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .search-placeholder-text { text-align: center; color: #666; margin-top: 20px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -115,15 +119,15 @@
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
     
     <div class="side-menu" id="sideMenu">
-        <span class="close-menu" onclick="toggleMenu()">&times;</span>
+        <span class="close-menu" onclick="closeAll()">&times;</span>
         <ul>
-            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#about" onclick="toggleMenu()">Why Choose Us</a></li>
-            <li><a href="#tests" onclick="toggleMenu()">Individual Tests</a></li>
-            <li><a href="#packages" onclick="toggleMenu()">Health Packages</a></li>
-            <li><a href="#service-areas" onclick="toggleMenu()">Service Area</a></li>
-            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#home" onclick="closeAll()">Home</a></li>
+            <li><a href="#about" onclick="closeAll()">Why Choose Us</a></li>
+            <li><a href="#tests" onclick="closeAll()">Individual Tests</a></li>
+            <li><a href="#packages" onclick="closeAll()">Health Packages</a></li>
+            <li><a href="#service-areas" onclick="closeAll()">Service Area</a></li>
+            <li><a href="#gallery" onclick="closeAll()">Gallery</a></li>
+            <li><a href="#contact" onclick="closeAll()">Contact</a></li>
         </ul>
     </div>
 
@@ -192,8 +196,12 @@
         </section>
 
         <section id="tests" class="glass-card" data-aos="fade-up">
-            <h2>🔬 Individual Lab Tests</h2>
+            <h2 style="text-align: center;">🔬 Search Individual Lab Tests</h2>
+            <div class="search-container">
+                <input type="text" id="testSearch" placeholder="🔍 Search (e.g. Vitamin, Sugar, CBC, Liver)..." onkeyup="filterTests()">
+            </div>
             <div id="dynamic-test-grid" class="test-grid-wrapper"></div>
+            <div id="search-instruction" class="search-placeholder-text">Enter test name to see pricing and add to cart</div>
         </section>
 
         <section id="packages" class="glass-card" data-aos="fade-up">
@@ -256,6 +264,7 @@
                 <span>Total:</span><span>₹<span id="cart-total">0</span></span>
             </div>
             <button onclick="checkoutWhatsApp()" class="btn btn-whatsapp" style="width:100%; margin-top:20px;">Checkout via WhatsApp</button>
+            <button onclick="closeAll()" style="width:100%; margin-top:10px; background:#eee; color:#333; border:none; padding:10px; border-radius:50px; cursor:pointer; font-weight:bold;">Close Cart</button>
         </div>
     </div>
 
@@ -273,12 +282,7 @@
         function openCart() {
             document.getElementById('cart-sidebar').classList.add('active');
             document.getElementById('overlay').classList.add('active');
-            window.history.pushState({ cartOpen: true }, "");
-        }
-
-        function closeCart() {
-            document.getElementById('cart-sidebar').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
+            document.body.style.overflow = 'hidden'; 
         }
 
         function toggleMenu() {
@@ -287,52 +291,193 @@
             if (!menu.classList.contains('active')) {
                 menu.classList.add('active');
                 overlay.classList.add('active');
-                window.history.pushState({ menuOpen: true }, "");
+                document.body.style.overflow = 'hidden';
             } else {
-                menu.classList.remove('active');
-                overlay.classList.remove('active');
+                closeAll();
             }
         }
-
-        window.onpopstate = function(event) {
-            closeCart();
-            document.getElementById('sideMenu').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
-        };
 
         function closeAll() {
-            if (document.getElementById('cart-sidebar').classList.contains('active') || 
-                document.getElementById('sideMenu').classList.contains('active')) {
-                history.back();
-            }
+            document.getElementById('cart-sidebar').classList.remove('active');
+            document.getElementById('sideMenu').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
+        // Complete 246 Test Data List
         const tests = [
-            { name: "Chikungunya IgM Card", icon: "fa-mosquito", bg: "#fff7ed", color: "#c2410c" },
-            { name: "Complete Blood Count (CBC)", icon: "fa-droplet", bg: "#fef2f2", color: "#dc2626" },
-            { name: "Dengue Duo Screening", icon: "fa-virus", bg: "#f0fdf4", color: "#16a34a" },
-            { name: "Dengue IgG & IgM", icon: "fa-shield-virus", bg: "#f0fdf4", color: "#15803d" },
-            { name: "Electrolytes (Na/K/Cl)", icon: "fa-vial-circle-check", bg: "#eff6ff", color: "#2563eb" },
-            { name: "ESR Test", icon: "fa-arrows-down-to-line", bg: "#fef2f2", color: "#991b1b" },
-            { name: "FSH Hormone Test", icon: "fa-dna", bg: "#faf5ff", color: "#9333ea" },
-            { name: "Glucose Random Test", icon: "fa-cubes-stacked", bg: "#f0f9ff", color: "#0ea5e9" },
-            { name: "HBA1C Test", icon: "fa-chart-line", bg: "#fff1f2", color: "#e11d48" },
-            { name: "Iron Studies Test", icon: "fa-magnet", bg: "#f8fafc", color: "#475569" },
-            { name: "Kidney Function (KFT)", icon: "fa-person-rays", bg: "#fff7ed", color: "#d97706" },
-            { name: "Lipid Profile Test", icon: "fa-heart-pulse", bg: "#fef2f2", color: "#dc2626" },
-            { name: "Liver Function (LFT)", icon: "fa-capsules", bg: "#fefce8", color: "#ca8a04" },
-            { name: "LH Hormone Test", icon: "fa-venus-mars", bg: "#fdf2f8", color: "#db2777" },
-            { name: "Pancreas Profile", icon: "fa-microscope", bg: "#ecfdf5", color: "#059669" },
-            { name: "Prolactin Test (PRL)", icon: "fa-user-nurse", bg: "#eef2ff", color: "#4f46e5" },
-            { name: "Prothrombin Time (PT INR)", icon: "fa-stopwatch", bg: "#fef2f2", color: "#b91c1c" },
-            { name: "Testosterone Total", icon: "fa-mars", bg: "#eff6ff", color: "#1d4ed8" },
-            { name: "Thyroid Profile Total", icon: "fa-bolt", bg: "#fffbeb", color: "#d97706" },
-            { name: "Troponin I, Rapid Card", icon: "fa-heart-circle-exclamation", bg: "#fef2f2", color: "#dc2626" },
-            { name: "Troponin T, Rapid Card", icon: "fa-heart-circle-check", bg: "#fff1f2", color: "#be123c" },
-            { name: "Typhoid (Typhidot)", icon: "fa-bacteria", bg: "#fff7ed", color: "#9a3412" },
-            { name: "Urine Routine & Micro", icon: "fa-vial", bg: "#fefce8", color: "#a16207" },
-            { name: "Vitamin B12 Test", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2" },
-            { name: "Vitamin D 25 Hydroxy", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c" }
+            { "name": "Absolute Basophils Count Blood Test", "price": 160, "code": "HM085", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "Absolute Eosinophil Count (AEC) Test", "price": 100, "code": "HM001", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Absolute Granulocyte Count Blood Test", "price": 160, "code": "HM072", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "Absolute Lymphocyte Count Blood Test", "price": 160, "code": "HM073", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "Absolute Monocyte Count Blood Test", "price": 160, "code": "HM074", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "Absolute Neutrophil Count (ANC) Blood Test", "price": 160, "code": "HM071", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "Absolute Reticulocyte Count Blood Test", "price": 380, "code": "HM002", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "Acid Phosphatase Total Blood Test", "price": 400, "code": "BC001", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "ADA Test (Adenosine Deaminase), Serum", "price": 600, "code": "BC002", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "Albumin Blood Test", "price": 140, "code": "BC003", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "Alkaline Phosphatase Blood Test (ALP Test)", "price": 140, "code": "BC004", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "ALT/SGPT Blood Test", "price": 140, "code": "BC005", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Ammonia Blood Test", "price": 1000, "code": "BC006", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "Amylase Blood Test", "price": 420, "code": "BC007", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "Anaemia Profile Basic", "price": 1200, "code": "SP038", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Anaemia Profile-Extensive", "price": 1800, "code": "SP039", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Anti CCP (Cyclic Citrullinated Peptide) Test", "price": 1050, "code": "IM001", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "Anti Double Stranded DNA (Anti-dsDNA) Test", "price": 1000, "code": "IM002", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "Anti Mullerian Hormone (AMH) Test", "price": 1600, "code": "EN001", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "Anti Nuclear Antibody (ANA) Test", "price": 600, "code": "IM003", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Anti Nuclear Antibody (ANA) Test - IFA", "price": 1100, "code": "IM004", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "Anti Streptolysin O (ASO) Titre Blood Test", "price": 400, "code": "IM005", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" },
+            { "name": "Anti-Thyroglobulin Antibody (Anti-Tg) Test", "price": 1000, "code": "EN002", "icon": "fa-bacteria", "bg": "#fefce8", "color": "#a16207" },
+            { "name": "Anti-Thyroid Peroxidase (Anti-TPO) Antibody Test", "price": 1000, "code": "EN003", "icon": "fa-pills", "bg": "#ecfeff", "color": "#0891b2" },
+            { "name": "Apolipoprotein - A1 & B Blood Test", "price": 1000, "code": "BC008", "icon": "fa-sun", "bg": "#fff7ed", "color": "#ea580c" },
+            { "name": "Apolipoprotein - A1 Blood Test", "price": 550, "code": "BC009", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "Apolipoprotein - B Blood Test", "price": 550, "code": "BC010", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "AST/SGOT Blood Test", "price": 140, "code": "BC011", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "B-Type Natriuretic Peptide (BNP) Blood Test", "price": 2000, "code": "BC012", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "Beta HCG (Human Chorionic Gonadotropin) Test", "price": 600, "code": "EN004", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "Bilirubin Profile Blood Test", "price": 240, "code": "BC013", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "Blood Group & RH Factor Test", "price": 150, "code": "HM003", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "Blood Urea Nitrogen (BUN) Test", "price": 140, "code": "BC014", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "Brucella IgG & IgM Antibody Test", "price": 1500, "code": "IM006", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "C - Reactive Protein (CRP) Test", "price": 380, "code": "IM007", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "C - Reactive Protein (CRP) Test-Quantitative", "price": 450, "code": "IM008", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "C-Peptide Test-Fasting", "price": 1000, "code": "EN005", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "CA 125 (Cancer Antigen 125) Test", "price": 800, "code": "EN006", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "CA 15.3 (Cancer Antigen 15.3) Test", "price": 800, "code": "EN007", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "CA 19.9 (Cancer Antigen 19.9) Test", "price": 800, "code": "EN008", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Calcium Blood Test", "price": 180, "code": "BC015", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Cardiac Profile - Basic", "price": 1000, "code": "SP032", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "CEA (Carcinoembryonic Antigen) Test", "price": 600, "code": "EN009", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "Ceruloplasmin Test", "price": 1000, "code": "BC016", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "Chikungunya IgM Card Test", "price": 600, "code": "IM010", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Chikungunya IgM ELISA Test", "price": 600, "code": "IM011", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "Chloride Blood Test", "price": 180, "code": "BC017", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" },
+            { "name": "Cholesterol Total Blood Test", "price": 140, "code": "BC018", "icon": "fa-bacteria", "bg": "#fefce8", "color": "#a16207" },
+            { "name": "Cholinesterase Blood Test", "price": 600, "code": "BC019", "icon": "fa-pills", "bg": "#ecfeff", "color": "#0891b2" },
+            { "name": "CK MB Blood Test", "price": 600, "code": "BC020", "icon": "fa-sun", "bg": "#fff7ed", "color": "#ea580c" },
+            { "name": "CK NAC Blood Test (CPK Test)", "price": 400, "code": "BC021", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "Complete Blood Count (CBC) Test", "price": 300, "code": "HM004", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Cortisol Serum Test-Fasting", "price": 600, "code": "EN010", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "Cotitne/Nicotine Test, Urine", "price": 1500, "code": "BC022", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "Creatinine Blood Test", "price": 140, "code": "BC023", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "D-Dimer Test-Quantitative", "price": 1100, "code": "HM005", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "Dengue Duo Screening Test (Card Method)", "price": 1000, "code": "IM012", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "Dengue IgG & IgM Antibody Test", "price": 600, "code": "IM013", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "Dengue IgG & IgM ELISA Test", "price": 1000, "code": "IM014", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "Dengue NS1 Antigen ELISA Test", "price": 600, "code": "IM015", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "Dengue NS1 Antigen Test", "price": 600, "code": "IM016", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "Diabetes Screening - Basic", "price": 500, "code": "SP031", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Double Marker (First Trimester) Test", "price": 2200, "code": "EN011", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "Electrolytes Blood Test (Na/K/Cl)", "price": 450, "code": "BC024", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "ESR Blood Test", "price": 100, "code": "HM006", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Estradiol (E2) Hormone Test", "price": 600, "code": "EN012", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Ferritin Blood Test", "price": 600, "code": "BC025", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "Fever Profile Extensive", "price": 1600, "code": "SP033", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "Fever Profile-Basic", "price": 1000, "code": "SP034", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "Fibrinogen Blood Test", "price": 600, "code": "HM007", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Folic Acid Blood Test", "price": 800, "code": "BC026", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "Free And Total Prostate Specific Antigen (PSA) Test", "price": 1200, "code": "EN013", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" },
+            { "name": "Free Testosterone Test", "price": 1000, "code": "EN014", "icon": "fa-bacteria", "bg": "#fefce8", "color": "#a16207" },
+            { "name": "Free Thyroxine (FT4) Test", "price": 380, "code": "EN015", "icon": "fa-pills", "bg": "#ecfeff", "color": "#0891b2" },
+            { "name": "Free Triiodothyronine (FT3) Test", "price": 380, "code": "EN016", "icon": "fa-sun", "bg": "#fff7ed", "color": "#ea580c" },
+            { "name": "FSH Hormone Test", "price": 500, "code": "EN017", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "G6PD Blood Test", "price": 600, "code": "HM008", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Gamma GT (GGT) Blood Test", "price": 280, "code": "BC027", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "Glucose Fasting & Post Prandial (F & PP) Blood Test", "price": 150, "code": "BC028", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "Glucose Fasting Blood Test", "price": 80, "code": "BC029", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "Glucose Post Prandial Blood Test", "price": 80, "code": "BC030", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "Glucose Random (RBS) Blood Test", "price": 80, "code": "BC031", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "Glucose Tolerance Test (GTT) - (3 Values)", "price": 250, "code": "BC032", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "H. Pylori IgG & IgM Antibody Test", "price": 1000, "code": "IM017", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "H. Pylori IgM Antibody Test", "price": 600, "code": "IM018", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "HBA1C Blood Test", "price": 450, "code": "BC033", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "Hepatitis A Virus (HAV) IgM Antibody Test", "price": 800, "code": "IM019", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Hepatitis B Surface (HBsAg) Antigen Test", "price": 300, "code": "IM020", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "Hepatitis B Surface (HBsAg) Antigen Test-Quantitative", "price": 800, "code": "IM021", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "Hepatitis C Virus (HCV) Antibody Test", "price": 450, "code": "IM022", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Hepatitis E Virus (HEV) IgM Antibody Test", "price": 800, "code": "IM023", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Herpes Simplex Virus (HSV) Type 1 & 2 IgG & IgM Antibody Test", "price": 2000, "code": "IM024", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "HIV 1 & 2 Antibody Test", "price": 350, "code": "IM025", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "HIV DUO (HIV Ag/Ab) Test", "price": 800, "code": "IM026", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "HLA B-27 (Flow Cytometry) Test", "price": 2500, "code": "HM009", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Homocysteine Blood Test", "price": 1000, "code": "BC034", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "HS CRP (High Sensitivity CRP) Test", "price": 600, "code": "IM027", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" },
+            { "name": "IgE Total Antibody Test", "price": 600, "code": "IM028", "icon": "fa-bacteria", "bg": "#fefce8", "color": "#a16207" },
+            { "name": "Indirect Coombs Test (ICT)", "price": 600, "code": "HM010", "icon": "fa-pills", "bg": "#ecfeff", "color": "#0891b2" },
+            { "name": "Infectious Mononucleosis (Monospot/Paul Bunnell) Test", "price": 600, "code": "IM029", "icon": "fa-sun", "bg": "#fff7ed", "color": "#ea580c" },
+            { "name": "Insulin Fasting & Post Prandial (F & PP) Test", "price": 1200, "code": "EN018", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "Insulin Fasting Test", "price": 600, "code": "EN019", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Iron Studies Test", "price": 800, "code": "BC035", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "Kidney Function Test (KFT)", "price": 600, "code": "SP035", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "LDH Blood Test (Lactate Dehydrogenase Test)", "price": 400, "code": "BC036", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "LDL Cholesterol Blood Test", "price": 200, "code": "BC037", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "Leptospira IgG & IgM Antibody Test", "price": 1500, "code": "IM030", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "LH Hormone Test", "price": 500, "code": "EN020", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "Lipase Blood Test", "price": 450, "code": "BC038", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "Lipid Profile Test", "price": 500, "code": "SP036", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "Lipoprotein (A) Blood Test", "price": 800, "code": "BC039", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "Liver Function Test (LFT)", "price": 600, "code": "SP037", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Lupus Anticoagulant (LA) Test", "price": 1800, "code": "HM011", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "Magnesium Blood Test", "price": 450, "code": "BC040", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "Malarial Antigen (VIVAX & FALCIPARUM) Test", "price": 300, "code": "HM012", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Malarial Parasite (MP) Slide Smear Test", "price": 150, "code": "HM013", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Microalbuminuria Test-Urine", "price": 500, "code": "BC041", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "Microalbuminuria/Creatinine Ratio-Urine", "price": 650, "code": "BC042", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "NT Pro-BNP Blood Test", "price": 2500, "code": "BC043", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "Occult Blood Test-Stool", "price": 200, "code": "HM014", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "P-Anca & C-Anca Antibody Test", "price": 1800, "code": "IM031", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "Packed Cell Volume (PCV) Blood Test", "price": 150, "code": "HM015", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" },
+            { "name": "Pancreas Profile", "price": 850, "code": "SP038", "icon": "fa-bacteria", "bg": "#fefce8", "color": "#a16207" },
+            { "name": "Parathyroid Hormone (PTH) Test", "price": 1200, "code": "EN021", "icon": "fa-pills", "bg": "#ecfeff", "color": "#0891b2" },
+            { "name": "Peripheral Blood Smear For Morphology Test", "price": 250, "code": "HM016", "icon": "fa-sun", "bg": "#fff7ed", "color": "#ea580c" },
+            { "name": "Phosphorus Blood Test", "price": 180, "code": "BC044", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "Platelet Count Blood Test", "price": 150, "code": "HM017", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Potassium Blood Test", "price": 180, "code": "BC045", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "Pre-Operative Profile-Basic", "price": 1600, "code": "SP040", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "Pregnancy Test-Urine", "price": 150, "code": "HM018", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "Progesterone Hormone Test", "price": 600, "code": "EN022", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "Prolactin Hormone Test", "price": 500, "code": "EN023", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "Prostate Specific Antigen (PSA) Test", "price": 650, "code": "EN024", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "Protein Total & Albumin-Globulin Ratio (A/G Ratio) Test", "price": 300, "code": "BC046", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "Protein Total Blood Test", "price": 140, "code": "BC047", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "Prothrombin Time With INR (PT/INR) Test", "price": 450, "code": "HM019", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "Quadruple Marker Test", "price": 3200, "code": "EN025", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "RA (Rheumatoid Arthritis) Factor Titre Test", "price": 450, "code": "IM033", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "Reticulocyte Count Blood Test", "price": 300, "code": "HM020", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "Rubella IgG & IgM Antibody Test", "price": 1000, "code": "IM034", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Rubella IgG Antibody ELISA Test", "price": 600, "code": "IM035", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Rubella IgM Antibody ELISA Test", "price": 600, "code": "IM036", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "Serum Albumin Test", "price": 140, "code": "BC003", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "Serum Iron Test", "price": 400, "code": "BC048", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "Sickling Test (Sickle Cell Smear)", "price": 300, "code": "HM021", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Sodium Blood Test", "price": 180, "code": "BC049", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "Sperm Analysis (Semen Analysis) Test", "price": 400, "code": "HM022", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" },
+            { "name": "Stool Routine & Microscopic Test", "price": 150, "code": "HM023", "icon": "fa-bacteria", "bg": "#fefce8", "color": "#a16207" },
+            { "name": "Testosterone Total Hormone Test", "price": 500, "code": "EN026", "icon": "fa-pills", "bg": "#ecfeff", "color": "#0891b2" },
+            { "name": "Thyroid Profile Free (FT3/FT4/TSH) Test", "price": 750, "code": "SP041", "icon": "fa-sun", "bg": "#fff7ed", "color": "#ea580c" },
+            { "name": "Thyroid Profile Total (T3/T4/TSH) Test", "price": 350, "code": "SP042", "icon": "fa-droplet", "bg": "#fff7ed", "color": "#c2410c" },
+            { "name": "Thyroid Stimulating Hormone (TSH) Test", "price": 200, "code": "EN027", "icon": "fa-microscope", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Thyroxine Total (T4) Test", "price": 200, "code": "EN028", "icon": "fa-vial", "bg": "#f0fdf4", "color": "#16a34a" },
+            { "name": "TIBC (Total Iron Binding Capacity) Blood Test", "price": 400, "code": "BC050", "icon": "fa-vial-virus", "bg": "#f0fdf4", "color": "#15803d" },
+            { "name": "TORCH Profile - IgG & IgM Extensive", "price": 4000, "code": "SP043", "icon": "fa-dna", "bg": "#eff6ff", "color": "#2563eb" },
+            { "name": "TORCH Profile - IgG Extensive", "price": 2200, "code": "SP044", "icon": "fa-virus", "bg": "#fef2f2", "color": "#991b1b" },
+            { "name": "TORCH Profile - IgM Extensive", "price": 2200, "code": "SP045", "icon": "fa-shield-virus", "bg": "#faf5ff", "color": "#9333ea" },
+            { "name": "Total & Differential Leucocyte Count (TLC/DLC) Blood Test", "price": 200, "code": "HM024", "icon": "fa-vial-circle-check", "bg": "#f0f9ff", "color": "#0ea5e9" },
+            { "name": "Triglycerides Blood Test", "price": 180, "code": "BC051", "icon": "fa-arrows-down-to-line", "bg": "#fff1f2", "color": "#e11d48" },
+            { "name": "Triiodothyronine Total (T3) Test", "price": 200, "code": "EN029", "icon": "fa-cubes-stacked", "bg": "#f8fafc", "color": "#475569" },
+            { "name": "Triple Marker Test", "price": 2800, "code": "EN030", "icon": "fa-chart-line", "bg": "#fff7ed", "color": "#d97706" },
+            { "name": "Troponin - I Blood Test-Rapid Card", "price": 700, "code": "IM037", "icon": "fa-magnet", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "Troponin T Blood Test-Rapid Card", "price": 800, "code": "IM038", "icon": "fa-person-rays", "bg": "#fefce8", "color": "#ca8a04" },
+            { "name": "Typhoid IgG & IgM Antibody (Typhidot) Test", "price": 450, "code": "IM039", "icon": "fa-heart-pulse", "bg": "#fdf2f8", "color": "#db2777" },
+            { "name": "Urea Blood Test", "price": 140, "code": "BC052", "icon": "fa-capsules", "bg": "#ecfdf5", "color": "#059669" },
+            { "name": "Uric Acid Blood Test", "price": 140, "code": "BC053", "icon": "fa-venus-mars", "bg": "#eef2ff", "color": "#4f46e5" },
+            { "name": "Urine Routine & Microscopic Test", "price": 150, "code": "HM025", "icon": "fa-user-nurse", "bg": "#fef2f2", "color": "#b91c1c" },
+            { "name": "VDRL (RPR) Test", "price": 250, "code": "IM040", "icon": "fa-stopwatch", "bg": "#eff6ff", "color": "#1d4ed8" },
+            { "name": "Vitamin B12 Blood Test", "price": 800, "code": "BC054", "icon": "fa-mars", "bg": "#fffbeb", "color": "#d97706" },
+            { "name": "Vitamin D 25-Hydroxy Test", "price": 1000, "code": "BC055", "icon": "fa-bolt", "bg": "#fef2f2", "color": "#dc2626" },
+            { "name": "VLDL Cholesterol Blood Test", "price": 180, "code": "BC056", "icon": "fa-heart-circle-exclamation", "bg": "#fff1f2", "color": "#be123c" },
+            { "name": "Widal Test (Typhoid Slide Method)", "price": 200, "code": "IM041", "icon": "fa-heart-circle-check", "bg": "#fff7ed", "color": "#9a3412" }
         ];
 
         const packages = [
@@ -350,9 +495,34 @@
         ];
 
         const testGrid = document.getElementById('dynamic-test-grid');
-        tests.forEach(test => {
-            testGrid.innerHTML += `<div class="test-ui-card"><div class="test-icon-circle" style="background:${test.bg}; color:${test.color};"><i class="fa-solid ${test.icon}"></i></div><div class="test-ui-name">${test.name}</div><button onclick="addToCart('${test.name}', 0, '')" class="test-ui-btn">Add to Cart</button></div>`;
-        });
+        const instruction = document.getElementById('search-instruction');
+        
+        function filterTests() {
+            const query = document.getElementById('testSearch').value.trim();
+            if (query.length === 0) {
+                testGrid.innerHTML = "";
+                instruction.style.display = "block";
+                return;
+            }
+            instruction.style.display = "none";
+            testGrid.innerHTML = "";
+            const filtered = tests.filter(t => t.name.toLowerCase().includes(query.toLowerCase()));
+            if (filtered.length === 0) {
+                testGrid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #888; padding: 20px;'>No tests found matching your search.</p>";
+                return;
+            }
+            filtered.forEach(test => {
+                testGrid.innerHTML += `
+                    <div class="test-ui-card">
+                        <div class="test-icon-circle" style="background:${test.bg}; color:${test.color};">
+                            <i class="fa-solid ${test.icon}"></i>
+                        </div>
+                        <div class="test-ui-name">${test.name}</div>
+                        <p style="font-weight: 800; color: var(--accent); margin-bottom: 10px;">₹${test.price}</p>
+                        <button onclick="addToCart('${test.name}', ${test.price}, '${test.code}')" class="test-ui-btn">Add to Cart</button>
+                    </div>`;
+            });
+        }
 
         const pkgGrid = document.getElementById('package-grid');
         packages.forEach(pkg => {
