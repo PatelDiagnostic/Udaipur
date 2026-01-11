@@ -102,6 +102,10 @@
         .call-float { position: fixed; bottom: 30px; left: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; z-index: 1001; font-weight: 800; border: 3px solid white; }
         footer { background: var(--primary); color: white; padding: 50px 0; text-align: center; margin-top: 60px; }
 
+        /* Payment Modal Styling */
+        .payment-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; display: none; justify-content: center; align-items: center; }
+        .qr-box { background: white; padding: 30px; border-radius: 20px; text-align: center; max-width: 350px; width: 90%; }
+
         @media (max-width: 768px) {
             .desktop-nav { display: none !important; }
             .menu-btn { display: block; }
@@ -118,6 +122,19 @@
 
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
     
+    <div id="paymentModal" class="payment-modal">
+        <div class="qr-box">
+            <h3 style="margin: 0 0 10px 0; color: var(--primary);">Pay for Booking</h3>
+            <p style="margin-bottom: 20px; font-weight: 600;">Total Amount: <span style="color:var(--accent); font-size: 1.5rem;">₹<span id="qrTotal">0</span></span></p>
+            <div id="qrCodeContainer" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                <img id="upiQR" src="" alt="UPI QR Code" style="width: 100%; height: auto; display: block;">
+            </div>
+            <p style="font-size: 0.85rem; color: #666;">UPI ID: sachindingri@oksbi</p>
+            <button onclick="confirmPaymentWhatsApp()" class="btn btn-whatsapp" style="width: 100%; margin-top: 10px;">I have Paid (Send Confirmation)</button>
+            <button onclick="closePayment()" style="background: none; border: none; color: #888; margin-top: 15px; cursor: pointer; text-decoration: underline;">Cancel</button>
+        </div>
+    </div>
+
     <div class="side-menu" id="sideMenu">
         <span class="close-menu" onclick="closeAll()">&times;</span>
         <ul>
@@ -263,7 +280,8 @@
             <div style="display:flex; justify-content:space-between; font-size:1.3rem; font-weight:800;">
                 <span>Total:</span><span>₹<span id="cart-total">0</span></span>
             </div>
-            <button onclick="checkoutWhatsApp()" class="btn btn-whatsapp" style="width:100%; margin-top:20px;">Checkout via WhatsApp</button>
+            <button onclick="generatePaymentQR()" class="btn" style="width:100%; margin-top:20px; background:var(--primary);">Pay with UPI QR</button>
+            <button onclick="checkoutWhatsApp()" class="btn btn-whatsapp" style="width:100%; margin-top:10px;">Book & Pay Later</button>
             <button onclick="closeAll()" style="width:100%; margin-top:10px; background:#eee; color:#333; border:none; padding:10px; border-radius:50px; cursor:pointer; font-weight:bold;">Close Cart</button>
         </div>
     </div>
@@ -301,6 +319,7 @@
             document.getElementById('cart-sidebar').classList.remove('active');
             document.getElementById('sideMenu').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
+            document.getElementById('paymentModal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
@@ -571,7 +590,37 @@
             if(cart.length === 0) return alert("Empty");
             let items = cart.map((t, i) => `${i+1}. Name: ${t.name}${t.code ? ', Code: '+t.code : ''}, Price: ₹${t.price}`).join("\n");
             let total = document.getElementById('cart-total').innerText;
-            let msg = `Booking Request:\n\n${items}\n\nTotal Payable: ₹${total}`;
+            let msg = `Booking Request (Pay Later):\n\n${items}\n\nTotal Payable: ₹${total}`;
+            window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // PAYMENT SYSTEM FUNCTIONS
+        function generatePaymentQR() {
+            const total = document.getElementById('cart-total').innerText;
+            if(total == "0") return alert("Cart is empty");
+            
+            document.getElementById('qrTotal').innerText = total;
+            
+            // Generate UPI Link
+            const upiID = "sachindingri@oksbi";
+            const businessName = encodeURIComponent("Patel Diagnostic Udaipur");
+            const upiLink = `upi://pay?pa=${upiID}&pn=${businessName}&am=${total}&cu=INR`;
+            
+            // Fetch QR from API
+            const qrAPI = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiLink)}`;
+            
+            document.getElementById('upiQR').src = qrAPI;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function confirmPaymentWhatsApp() {
+            let items = cart.map((t, i) => `${i+1}. ${t.name}`).join(", ");
+            let total = document.getElementById('cart-total').innerText;
+            let msg = `Payment Confirmation:\nI have paid ₹${total} via UPI for: ${items}.\nPlease confirm the booking.`;
             window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
