@@ -75,6 +75,9 @@
         box-shadow: 0 6px 15px rgba(11, 78, 162, 0.2); transform: translateY(-1px);
         }
 
+        .gbp-btn-nav { background: #eef2ff; color: #4f46e5; padding: 10px 18px; border-radius: 8px; font-weight: 700; border: 1.5px solid transparent; transition: all 0.3s ease; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
+        .gbp-btn-nav:hover { background: #4f46e5; color: white; box-shadow: 0 6px 15px rgba(79, 70, 229, 0.2); transform: translateY(-1px); }
+
         /* Secondary Nav */
         .sec-nav { background: white;
         padding: 12px 5%; border-bottom: 1px solid #e2e8f0; display: flex; gap: 35px; font-size: 15px; font-weight: 600; color: #475569; overflow-x: auto;
@@ -189,6 +192,13 @@
         .btn-action-fill:hover { background: var(--accent-hover); border-color: var(--accent-hover);
         box-shadow: 0 6px 18px rgba(215, 25, 32, 0.25); transform: translateY(-1px);
         }
+
+        /* Google Reviews Cards */
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 20px; }
+        .review-card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; }
+        .review-stars { color: #f59e0b; margin-bottom: 12px; font-size: 14px; }
+        .review-text { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+        .review-author { font-weight: 700; color: var(--primary); font-size: 15px; display: flex; align-items: center; justify-content: space-between; }
 
         /* Health Package Inquiry Banner */
         .package-inquiry-banner { background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
@@ -315,7 +325,7 @@
 
         /* Responsive Mobile Layout */
         @media (max-width: 1024px) {
-            .package-grid, .features-grid { grid-template-columns: repeat(2, 1fr);
+            .package-grid, .features-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr);
             }
             .footer-grid { grid-template-columns: repeat(2, 1fr);
             }
@@ -335,7 +345,7 @@
             }
             .hero-image { margin-top: 40px;
             }
-            .package-grid, .features-grid, .area-grid, .footer-grid { grid-template-columns: 1fr;
+            .package-grid, .features-grid, .area-grid, .footer-grid, .reviews-grid { grid-template-columns: 1fr;
             }
             #cart-sidebar { width: 100%; right: -100%;
             }
@@ -416,6 +426,7 @@ height:auto;">
         <div class="header-tagline">Trusted Home Blood Collection Service Provider</div>
         
         <div class="nav-actions">
+            <a href="https://share.google/OCkSDNPu9QUNX47RU" target="_blank" class="gbp-btn-nav"><i class="fas fa-map-marker-alt"></i> View On Google</a>
             <a href="tel:+918209746239" class="call-btn"><i class="fas fa-headset"></i> Request Callback</a>
         </div>
     </nav>
@@ -438,8 +449,8 @@ height:auto;">
 
     <section id="home" class="hero">
         <div class="hero-content" data-aos="fade-right">
-            <h2>The Royal Standard of Home Diagnostics in Udaipur</h1>
-            <h1>Patel Diagnostic Udaipur<h1>
+            <h2>The Royal Standard of Home Diagnostics in Udaipur</h2>
+            <h1>Patel Diagnostic Udaipur</h1>
             <p>100% Free Home Blood Collection across Udaipur City and all Rural Belts by Trusted Service Provider Patel Diagnostic Udaipur. Highly hygienic, safe, and accurate.</p>
             <div class="hero-buttons">
                 <a href="https://wa.me/918209746239?text=Hi,%20I%20want%20to%20book%20a%20home%20blood%20collection." class="btn-primary" target="_blank"><i class="fab fa-whatsapp" style="font-size: 1.2em;"></i> Book via WhatsApp</a>
@@ -519,6 +530,55 @@ height:auto;">
                 <p>Specialized preventive profiles tailored for your complete well-being</p>
             </div>
             <div class="package-grid" id="package-grid"></div>
+        </section>
+
+        <!-- Google Reviews Section -->
+        <section id="reviews" style="margin-top: 90px;" data-aos="fade-up">
+            <div class="section-header">
+                <h2>What Our Patients Say</h2>
+                <p>Real experiences shared by families across Udaipur</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Extremely professional service! The phlebotomist arrived right on time at our home in Hiran Magri for a blood test. Completely painless and reports were delivered on WhatsApp quickly."</p>
+                    </div>
+                    <div class="review-author">
+                        <span>Ramesh Patel</span>
+                        <i class="fab fa-google" style="color: #4285F4;"></i>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Best home collection service in Udaipur. Very polite staff and accurate NABL reports at the lowest prices compared to other diagnostic labs. Highly recommended!"</p>
+                    </div>
+                    <div class="review-author">
+                        <span>Sunita Menaria</span>
+                        <i class="fab fa-google" style="color: #4285F4;"></i>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Booked a full body health package. Free home sample collection was seamless and fast. Very convenient for elderly family members who cannot travel."</p>
+                    </div>
+                    <div class="review-author">
+                        <span>Vikram Singh Chouhan</span>
+                        <i class="fab fa-google" style="color: #4285F4;"></i>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://share.google/OCkSDNPu9QUNX47RU" target="_blank" class="btn-primary" style="background: #0b4ea2; font-size: 15px; padding: 12px 25px;"><i class="fab fa-google"></i> View On Google</a>
+            </div>
         </section>
 
         <section id="service-areas" style="margin-top: 90px;" data-aos="fade-up">
@@ -642,8 +702,9 @@ height:auto;">
                     <p style="color: #cbd5e1; margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="width: 20px;"></i> Titaradi, Udaipur, Rajasthan</p>
                     <p style="color: #fff; font-weight: bold; margin-top: 15px;">Call to Book:</p>
                     <p style="color: #cbd5e1;"><i class="fas fa-phone-alt" style="width: 20px;"></i> 8209746239 | 7733023857</p>
-                    <p style="color: #fff; font-weight: bold; margin-top: 15px;">Social Media:</p>
-                    <a href="https://www.instagram.com/patel_diagnostic_udaipur" target="_blank" style="color:var(--accent); font-weight:bold; font-size: 16px;"><i class="fab fa-instagram" style="font-size: 1.2em; width: 20px;"></i> @patel_diagnostic_udaipur</a>
+                    <p style="color: #fff; font-weight: bold; margin-top: 15px;">Social Media & Map:</p>
+                    <a href="https://www.instagram.com/patel_diagnostic_udaipur" target="_blank" style="color:var(--accent); font-weight:bold; font-size: 16px; margin-bottom: 8px;"><i class="fab fa-instagram" style="font-size: 1.2em; width: 20px;"></i> @patel_diagnostic_udaipur</a>
+                    <a href="https://share.google/OCkSDNPu9QUNX47RU" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 700; margin-top: 5px; transition: background 0.2s;"><i class="fas fa-map-marker-alt"></i> View On Google</a>
                 </div>
             </div>
             
@@ -685,234 +746,273 @@ height:auto;">
         }
 
         const tests = [
-            { name: "Absolute Basophils Count Blood Test", price: 160, code: "HM085", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "0 - 300 cells/µL (0-1%)", use: "helps diagnose allergic reactions, parasitic conditions, and chronic inflammatory disorders." },
-            { name: "Absolute Eosinophil Count (AEC) Test", price: 100, code: "HM001", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "40 - 440 cells/µL", use: "detects asthma, allergic rhinitis, skin rashes, and parasitic infections." },
-            { name: "Absolute Granulocyte Count Blood Test", price: 160, code: "HM072", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "2,500 - 7,500 cells/µL", use: "monitors your immune health and detects acute bacterial infections or bone marrow disorders." },
-            { name: "Absolute Lymphocyte Count Blood Test", price: 160, code: "HM073", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "1,000 - 4,800 cells/µL", use: "is crucial for detecting viral infections, immune deficiencies, and lymphatic conditions." },
-            { name: "Absolute Monocyte Count Blood Test", price: 160, code: "HM074", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "200 - 1,000 cells/µL", use: "evaluates white blood cells to detect chronic infections, autoimmune diseases, or blood disorders." },
-            { name: "Absolute Neutrophil Count (ANC) Blood Test", price: 160, code: "HM071", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "2,500 - 7,000 cells/µL", use: "is essential for assessing your body's ability to fight off bacterial infections." },
-            { name: "Absolute Reticulocyte Count Blood Test", price: 380, code: "HM002", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "0.5 - 2.5% of RBCs", use: "evaluates bone marrow function and helps differentiate various types of anemia." },
-            { name: "Acid Phosphatase Total Blood Test", price: 400, code: "BC001", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "0 - 5.5 U/L", use: "helps monitor prostate health and detects certain bone or liver metabolic diseases." },
-            { name: "ADA Test (Adenosine Deaminase), Serum", price: 600, code: "BC002", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "< 40 U/L", use: "is an accurate serum biomarker used primarily to help diagnose tuberculosis (TB) infections." },
-            { name: "Albumin Blood Test", price: 140, code: "BC003", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "3.5 - 5.2 g/dL", use: "checks your liver and kidney function, as well as overall nutritional protein status." },
-            { name: "Alkaline Phosphatase Blood Test (ALP Test)", price: 140, code: "BC004", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "44 - 147 IU/L", use: "is vital for detecting liver conditions, gallbladder obstructions, or bone disorders." },
-            { name: "ALT/SGPT Blood Test", price: 140, code: "BC005", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "7 - 56 U/L", use: "monitors your liver health and detects early liver tissue inflammation or damage." },
-            { name: "Ammonia Blood Test", price: 1000, code: "BC006", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "15 - 45 µg/dL", use: "evaluates severe liver dysfunction, hepatic encephalopathy, or urea cycle disorders." },
-            { name: "Amylase Blood Test", price: 420, code: "BC007", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "30 - 110 U/L", use: "effectively monitors pancreatic health and detects acute or chronic pancreatitis." },
-            { name: "Anaemia Profile Basic", price: 1200, code: "SP038", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Multiple parameters", use: "screens for iron deficiency, hemoglobin abnormalities, and basic red cell disorders." },
-            { name: "Anaemia Profile-Extensive", price: 1800, code: "SP039", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Multiple parameters", use: "provides a complete evaluation of blood health, iron stores, Vitamin B12, and folic acid." },
-            { name: "Anti CCP (Cyclic Citrullinated Peptide) Test", price: 1050, code: "IM001", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "< 20 u/mL", use: "is used for the early detection and specific diagnosis of rheumatoid arthritis." },
-            { name: "Anti Double Stranded DNA (Anti-dsDNA) Test", price: 1000, code: "IM002", icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "< 30 IU/mL", use: "is a crucial autoimmune marker test used to confirm Systemic Lupus Erythematosus (SLE)." },
-            { name: "Anti Mullerian Hormone (AMH) Test", price: 1600, code: "EN001", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "Varies by age/gender", use: "assesses ovarian reserve, egg quantity, and female fertility health." },
-            { name: "Anti Nuclear Antibody (ANA) Test", price: 600, code: "IM003", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative (Titer < 1:40)", use: "screens for systemic autoimmune disorders like Lupus, Scleroderma, and Sjögren's syndrome." },
-            { name: "Anti Nuclear Antibody (ANA) Test - IFA", price: 1100, code: "IM004", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "Negative", use: "provides gold-standard immunofluorescence screening for complex autoimmune conditions." },
-            { name: "Anti Streptolysin O (ASO) Titre Blood Test", price: 400, code: "IM005", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "< 200 IU/mL", use: "checks for recent Group A Streptococcus bacterial infections causing rheumatic fever." },
-            { name: "Anti-Thyroglobulin Antibody (Anti-Tg) Test", price: 1000, code: "EN002", icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "< 116 IU/mL", use: "helps diagnose autoimmune thyroid diseases such as Hashimoto's thyroiditis." },
-            { name: "Anti-Thyroid Peroxidase (Anti-TPO) Antibody Test", price: 1000, code: "EN003", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "< 9 IU/mL", use: "detects antibodies against thyroid peroxidase to confirm autoimmune thyroid disorders." },
-            { name: "Apolipoprotein - A1 & B Blood Test", price: 1000, code: "BC008", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Varies by gender", use: "evaluates advanced cardiovascular disease risks by measuring atherogenic lipid proteins." },
-            { name: "Apolipoprotein - A1 Blood Test", price: 550, code: "BC009", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "119 - 240 mg/dL", use: "measures protective HDL-associated proteins to assess long-term heart health." },
-            { name: "Apolipoprotein - B Blood Test", price: 550, code: "BC010", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "55 - 125 mg/dL", use: "measures harmful LDL-associated proteins that contribute to arterial plaque buildup." },
-            { name: "AST/SGOT Blood Test", price: 140, code: "BC011", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "8 - 40 U/L", use: "checks for liver cell injury, heart muscle damage, and muscle tissue disorders." },
-            { name: "B-Type Natriuretic Peptide (BNP) Blood Test", price: 2000, code: "BC012", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "< 100 pg/mL", use: "is highly effective at diagnosing congestive heart failure and assessing cardiac strain." },
-            { name: "Beta HCG (Human Chorionic Gonadotropin) Test", price: 600, code: "EN004", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "Varies by pregnancy week", use: "confirms pregnancy status and monitors early gestational development." },
-            { name: "Bilirubin Profile Blood Test", price: 240, code: "BC013", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "0.1 - 1.2 mg/dL", use: "checks for jaundice, liver dysfunction, hemolysis, or bile duct obstructions." },
-            { name: "Blood Group & RH Factor Test", price: 150, code: "HM003", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "A/B/O, Positive/Negative", use: "determines your ABO blood type and Rh factor for transfusions or pregnancy." },
-            { name: "Blood Urea Nitrogen (BUN) Test", price: 140, code: "BC014", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "7 - 20 mg/dL", use: "evaluates how effectively your kidneys clear metabolic waste products from the blood." },
-            { name: "Brucella IgG & IgM Antibody Test", price: 1500, code: "IM006", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Negative", use: "detects specific antibodies to diagnose Brucellosis bacterial infection from livestock." },
-            { name: "C - Reactive Protein (CRP) Test", price: 380, code: "IM007", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "< 10 mg/L", use: "is an acute phase reactant used to detect active body inflammation or acute infections." },
-            { name: "C - Reactive Protein (CRP) Test-Quantitative", price: 450, code: "IM008", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "< 10 mg/L", use: "provides an exact quantitative measurement of systemic inflammatory activity." },
-            { name: "C-Peptide Test-Fasting", price: 1000, code: "EN005", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "0.5 - 2.0 ng/mL", use: "evaluates endogenous insulin production to differentiate Type 1 and Type 2 diabetes." },
-            { name: "CA 125 (Cancer Antigen 125) Test", price: 800, code: "EN006", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "< 35 U/mL", use: "is a tumor marker primarily utilized for monitoring ovarian cancer treatment response." },
-            { name: "CA 15.3 (Cancer Antigen 15.3) Test", price: 800, code: "EN007", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "< 30 U/mL", use: "is a specialized tumor marker used in monitoring breast cancer recurrence." },
-            { name: "CA 19.9 (Cancer Antigen 19.9) Test", price: 800, code: "EN008", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "< 37 U/mL", use: "is a tumor marker for monitoring pancreatic, gallbladder, or gastrointestinal cancers." },
-            { name: "Calcium Blood Test", price: 180, code: "BC015", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "8.6 - 10.3 mg/dL", use: "checks bone density health and detects parathyroid or renal function disorders." },
-            { name: "Cardiac Profile - Basic", price: 1000, code: "SP032", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Multiple parameters", use: "assesses overall heart health, lipid risks, and myocardial disease indicators." },
-            { name: "CEA (Carcinoembryonic Antigen) Test", price: 600, code: "EN009", icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "< 2.5 ng/mL", use: "is a broad-spectrum tumor marker test used to monitor gastrointestinal cancers." },
-            { name: "Ceruloplasmin Test", price: 1000, code: "BC016", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "20 - 60 mg/dL", use: "helps diagnose Wilson's disease and copper transport metabolic abnormalities." },
-            { name: "Chikungunya IgM Card Test", price: 600, code: "IM010", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "provides rapid qualitative screening for acute Chikungunya viral infection." },
-            { name: "Chikungunya IgM ELISA Test", price: 600, code: "IM011", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "Negative", use: "offers high-sensitivity ELISA confirmation for Chikungunya virus antibodies." },
-            { name: "Chloride Blood Test", price: 180, code: "BC017", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "96 - 106 mEq/L", use: "evaluates body electrolyte homeostasis and blood acid-base equilibrium." },
-            { name: "Cholesterol Total Blood Test", price: 140, code: "BC018", icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "< 200 mg/dL", use: "measures total circulating fats to evaluate risk for coronary artery disease." },
-            { name: "Cholinesterase Blood Test", price: 600, code: "BC019", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "8 - 18 U/mL", use: "detects organophosphate pesticide exposure and assesses liver synthetic function." },
-            { name: "CK MB Blood Test", price: 600, code: "BC020", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "3 - 5% of total CK", use: "is a cardiac enzyme marker used to help diagnose acute myocardial infarction." },
-            { name: "CK NAC Blood Test (CPK Test)", price: 400, code: "BC021", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "22 - 198 U/L", use: "measures total creatine kinase to evaluate skeletal or cardiac muscle injury." },
-            { name: "Complete Blood Count (CBC) Test", price: 300, code: "HM004", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "Multiple parameters", use: "evaluates hemoglobin, RBCs, WBCs, and platelets to detect anemia or infections." },
-            { name: "Cortisol Serum Test-Fasting", price: 600, code: "EN010", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "5 - 25 mcg/dL (Morning)", use: "evaluates adrenal gland health and screens for Cushing's or Addison's disease." },
-            { name: "Cotitne/Nicotine Test, Urine", price: 1500, code: "BC022", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Negative", use: "detects nicotine metabolites in urine for smoking status verification." },
-            { name: "Creatinine Blood Test", price: 140, code: "BC023", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "0.6 - 1.2 mg/dL", use: "is a primary quantitative indicator of renal filtration health and kidney function." },
-            { name: "D-Dimer Test-Quantitative", price: 1100, code: "HM005", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 0.50 mg/L FEU", use: "helps rule out dangerous intravascular blood clots like DVT or Pulmonary Embolism." },
-            { name: "Dengue Duo Screening Test (Card Method)", price: 1000, code: "IM012", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "provides rapid dual screening for Dengue NS1 antigen and IgG/IgM antibodies." },
-            { name: "Dengue IgG & IgM Antibody Test", price: 600, code: "IM013", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Negative", use: "detects specific immune antibodies to confirm recent or past Dengue fever." },
-            { name: "Dengue IgG & IgM ELISA Test", price: 1000, code: "IM014", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Negative", use: "is the gold-standard ELISA test for detecting Dengue virus antibodies." },
-            { name: "Dengue NS1 Antigen ELISA Test", price: 600, code: "IM015", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "Negative", use: "provides high-accuracy ELISA detection of Dengue viral antigen on Day 1 of fever." },
-            { name: "Dengue NS1 Antigen Test", price: 600, code: "IM016", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "Negative", use: "detects the presence of Dengue viral antigen in the early acute fever phase." },
-            { name: "Diabetes Screening - Basic", price: 500, code: "SP031", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Multiple parameters", use: "provides essential fasting sugar and HbA1c screening for diabetes monitoring." },
-            { name: "Double Marker (First Trimester) Test", price: 2200, code: "EN011", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Varies by gestation", use: "screens for fetal chromosomal abnormalities like Down Syndrome in early pregnancy." },
-            { name: "Electrolytes Blood Test (Na/K/Cl)", price: 450, code: "BC024", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "Multiple parameters", use: "measures essential blood salts (Sodium, Potassium, Chloride) for fluid balance." },
-            { name: "ESR Blood Test", price: 100, code: "HM006", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "0 - 22 mm/hr", use: "detects generalized inflammation associated with chronic infections or autoimmune conditions." },
-            { name: "Estradiol (E2) Hormone Test", price: 600, code: "EN012", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Varies by cycle phase", use: "evaluates ovarian follicular development and primary estrogen hormonal levels." },
-            { name: "Ferritin Blood Test", price: 600, code: "BC025", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "24 - 336 mcg/L", use: "measures total iron storage reserves in the body to detect latent anemia." },
-            { name: "Fever Profile Extensive", price: 1600, code: "SP033", icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "Multiple parameters", use: "comprehensively screens for Malaria, Dengue, Typhoid, CBC, and Urine parameters." },
-            { name: "Fever Profile-Basic", price: 1000, code: "SP034", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "Multiple parameters", use: "provides essential initial pathology screening for acute unexplained fever." },
-            { name: "Fibrinogen Blood Test", price: 600, code: "HM007", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "200 - 400 mg/dL", use: "evaluates essential coagulation factors to assess bleeding or clotting disorders." },
-            { name: "Folic Acid Blood Test", price: 800, code: "BC026", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "2.7 - 17.0 ng/mL", use: "checks Vitamin B9 levels to diagnose megaloblastic anemia and cellular health." },
-            { name: "Free And Total Prostate Specific Antigen (PSA) Test", price: 1200, code: "EN013", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "Ratio evaluation", use: "provides detailed screening to differentiate benign prostatic hyperplasia and prostate cancer." },
-            { name: "Free Testosterone Test", price: 1000, code: "EN014", icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "Varies by gender/age", use: "measures the unattached, biologically active form of testosterone in circulation." },
-            { name: "Free Thyroxine (FT4) Test", price: 380, code: "EN015", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "0.8 - 1.8 ng/dL", use: "measures active unbound T4 thyroid hormone unaffected by protein binding variations." },
-            { name: "Free Triiodothyronine (FT3) Test", price: 380, code: "EN016", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "2.3 - 4.1 pg/mL", use: "assesses metabolic thyroid activity by quantifying free unbound T3 hormone." },
-            { name: "FSH Hormone Test", price: 500, code: "EN017", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "Varies by gender/cycle", use: "evaluates pituitary function, egg development, sperm production, and menopause." },
-            { name: "G6PD Blood Test", price: 600, code: "HM008", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "7.0 - 20.5 U/g Hb", use: "screens for enzyme deficiency that causes hemolytic anemia after drug exposure." },
-            { name: "Gamma GT (GGT) Blood Test", price: 280, code: "BC027", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "9 - 48 U/L", use: "serves as a sensitive biomarker for bile duct obstruction and heavy alcohol usage." },
-            { name: "Glucose Fasting & Post Prandial (F & PP) Blood Test", price: 150, code: "BC028", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "F:<100, PP:<140 mg/dL", use: "evaluates blood glucose regulation before fasting and 2 hours post-meal." },
-            { name: "Glucose Fasting Blood Test", price: 80, code: "BC029", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "70 - 99 mg/dL", use: "is the standard baseline test for detecting diabetes mellitus after overnight fasting." },
-            { name: "Glucose Post Prandial Blood Test", price: 80, code: "BC030", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 140 mg/dL", use: "measures post-meal glycemic control and insulin responsiveness." },
-            { name: "Glucose Random (RBS) Blood Test", price: 80, code: "BC031", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "< 200 mg/dL", use: "provides an immediate random check of current circulating blood sugar levels." },
-            { name: "Glucose Tolerance Test (GTT) - (3 Values)", price: 250, code: "BC032", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Varies over time", use: "diagnoses gestational diabetes during pregnancy via timed glucose challenges." },
-            { name: "H. Pylori IgG & IgM Antibody Test", price: 1000, code: "IM017", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Negative", use: "detects Helicobacter pylori antibodies responsible for gastritis and stomach ulcers." },
-            { name: "H. Pylori IgM Antibody Test", price: 600, code: "IM018", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "Negative", use: "identifies acute active gastric bacterial infection caused by H. Pylori." },
-            { name: "HBA1C Blood Test", price: 450, code: "BC033", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "< 5.7%", use: "measures glycated hemoglobin to reflect average 3-month blood sugar control." },
-            { name: "Hepatitis A Virus (HAV) IgM Antibody Test", price: 800, code: "IM019", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "confirms acute Hepatitis A viral infection affecting liver function." },
-            { name: "Hepatitis B Surface (HBsAg) Antigen Test", price: 300, code: "IM020", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Negative", use: "is the primary viral marker test used to diagnose active Hepatitis B infection." },
-            { name: "Hepatitis B Surface (HBsAg) Antigen Test-Quantitative", price: 800, code: "IM021", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "< 0.05 IU/mL", use: "quantifies Hepatitis B viral surface antigen concentration in serum." },
-            { name: "Hepatitis C Virus (HCV) Antibody Test", price: 450, code: "IM022", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Negative", use: "screens for exposure to Hepatitis C viral liver infection." },
-            { name: "Hepatitis E Virus (HEV) IgM Antibody Test", price: 800, code: "IM023", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Negative", use: "diagnoses acute waterborne Hepatitis E viral liver infection." },
-            { name: "Herpes Simplex Virus (HSV) Type 1 & 2 IgG & IgM Antibody Test", price: 2000, code: "IM024", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Negative", use: "screens for past exposure and acute viral activity of HSV-1 and HSV-2." },
-            { name: "HIV 1 & 2 Antibody Test", price: 350, code: "IM025", icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "Non-Reactive", use: "is an essential confidential screening test for Human Immunodeficiency Virus." },
-            { name: "HIV DUO (HIV Ag/Ab) Test", price: 800, code: "IM026", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "Non-Reactive", use: "provides 4th-generation early detection of HIV p24 antigen and antibodies." },
-            { name: "HLA B-27 (Flow Cytometry) Test", price: 2500, code: "HM009", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "diagnoses genetic predisposition to Ankylosing Spondylitis and spinal arthritis." },
-            { name: "Homocysteine Blood Test", price: 1000, code: "BC034", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "4 - 15 µmol/L", use: "evaluates independent amino acid risk factors for stroke and cardiovascular disease." },
-            { name: "HS CRP (High Sensitivity CRP) Test", price: 600, code: "IM027", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "< 1.0 mg/L (Low Risk)", use: "accurately predicts long-term risk of developing coronary artery disease." },
-            { name: "IgE Total Antibody Test", price: 600, code: "IM028", icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "< 100 kU/L", use: "quantifies total circulating allergic antibodies to diagnose asthma or skin allergies." },
-            { name: "Indirect Coombs Test (ICT)", price: 600, code: "HM010", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "Negative", use: "screens maternal blood for anti-Rh antibodies during pregnancy." },
-            { name: "Infectious Mononucleosis (Monospot/Paul Bunnell) Test", price: 600, code: "IM029", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Negative", use: "diagnoses glandular fever caused by Epstein-Barr viral infection." },
-            { name: "Insulin Fasting & Post Prandial (F & PP) Test", price: 1200, code: "EN018", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "Multiple values", use: "evaluates pancreatic insulin secretion and metabolic insulin resistance." },
-            { name: "Insulin Fasting Test", price: 600, code: "EN019", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "2.6 - 24.9 µIU/mL", use: "evaluates fasting insulin resistance and helps investigate metabolic syndrome." },
-            { name: "Iron Studies Test", price: 800, code: "BC035", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "Multiple parameters", use: "provides a complete evaluation of serum iron, TIBC, and ferritin saturation." },
-            { name: "Kidney Function Test (KFT)", price: 600, code: "SP035", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Multiple parameters", use: "evaluates renal metabolic filtration parameters including Urea, Creatinine, and Uric Acid." },
-            { name: "LDH Blood Test (Lactate Dehydrogenase Test)", price: 400, code: "BC036", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "140 - 280 U/L", use: "detects widespread cellular breakdown, anemia, liver tissue injury, or lung disease." },
-            { name: "LDL Cholesterol Blood Test", price: 200, code: "BC037", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 100 mg/dL", use: "measures 'bad' cholesterol directly linked to arterial plaque buildup." },
-            { name: "Leptospira IgG & IgM Antibody Test", price: 1500, code: "IM030", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "confirms Leptospirosis bacterial infection spread via contaminated water." },
-            { name: "LH Hormone Test", price: 500, code: "EN020", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Varies by gender/cycle", use: "triggers ovulation assessment and evaluates pituitary reproductive health." },
-            { name: "Lipase Blood Test", price: 450, code: "BC038", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "0 - 160 U/L", use: "is the gold-standard pancreatic enzyme test to diagnose acute pancreatitis." },
-            { name: "Lipid Profile Test", price: 500, code: "SP036", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "Multiple parameters", use: "measures total cholesterol, HDL, LDL, VLDL, and triglycerides for heart health." },
-            { name: "Lipoprotein (A) Blood Test", price: 800, code: "BC039", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "< 30 mg/dL", use: "evaluates genetic inherited risk factors for premature heart disease." },
-            { name: "Liver Function Test (LFT)", price: 600, code: "SP037", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Multiple parameters", use: "evaluates liver enzymes (SGOT, SGPT, ALP), proteins, and bilirubin profiles." },
-            { name: "Lupus Anticoagulant (LA) Test", price: 1800, code: "HM011", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Negative", use: "investigates autoantibodies causing abnormal blood clot formation or pregnancy loss." },
-            { name: "Magnesium Blood Test", price: 450, code: "BC040", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "1.7 - 2.2 mg/dL", use: "evaluates crucial serum minerals affecting cardiac rhythm and neuromuscular function." },
-            { name: "Malarial Antigen (VIVAX & FALCIPARUM) Test", price: 300, code: "HM012", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Negative", use: "provides rapid antigen differentiation between P. vivax and P. falciparum malaria." },
-            { name: "Malarial Parasite (MP) Slide Smear Test", price: 150, code: "HM013", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Negative", use: "is the microscopic gold-standard slide method to identify malarial parasites." },
-            { name: "Microalbuminuria Test-Urine", price: 500, code: "BC041", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "< 30 mg/g creatinine", use: "detects microscopic protein leakage in urine for early diabetic kidney damage." },
-            { name: "Microalbuminuria/Creatinine Ratio-Urine", price: 650, code: "BC042", icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "< 30 mg/g", use: "provides precise monitoring of early hypertensive and diabetic nephropathy." },
-            { name: "NT Pro-BNP Blood Test", price: 2500, code: "BC043", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "< 125 pg/mL", use: "serves as a quantitative biomarker to evaluate heart failure severity." },
-            { name: "Occult Blood Test-Stool", price: 200, code: "HM014", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "detects hidden gastrointestinal bleeding associated with ulcers or polyps." },
-            { name: "P-Anca & C-Anca Antibody Test", price: 1800, code: "IM031", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "Negative", use: "helps diagnose autoimmune vasculitis diseases affecting small blood vessels." },
-            { name: "Packed Cell Volume (PCV) Blood Test", price: 150, code: "HM015", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "38 - 52%", use: "measures the volume percentage of red blood cells in whole blood." },
-            { name: "Pancreas Profile", price: 850, code: "SP038", icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "Multiple parameters", use: "combines Amylase and Lipase enzyme parameters to evaluate pancreatic health." },
-            { name: "Parathyroid Hormone (PTH) Test", price: 1200, code: "EN021", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "10 - 55 pg/mL", use: "regulates serum calcium and phosphorus balance to diagnose parathyroid gland disorders." },
-            { name: "Peripheral Blood Smear For Morphology Test", price: 250, code: "HM016", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Normal morphology", use: "microscopically evaluates blood cell structural morphology to detect blood diseases." },
-            { name: "Phosphorus Blood Test", price: 180, code: "BC044", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "2.5 - 4.5 mg/dL", use: "evaluates bone metabolism and renal tubular mineral absorption." },
-            { name: "Platelet Count Blood Test", price: 150, code: "HM017", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "150,000 - 450,000/µL", use: "checks blood clotting cell count to evaluate Dengue or bleeding disorders." },
-            { name: "Potassium Blood Test", price: 180, code: "BC045", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "3.5 - 5.0 mEq/L", use: "is essential for regulating cardiac electrical conduction and muscular function." },
-            { name: "Pre-Operative Profile-Basic", price: 1600, code: "SP040", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Multiple parameters", use: "provides compulsory health screening prior to surgical anesthesia." },
-            { name: "Pregnancy Test-Urine", price: 150, code: "HM018", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "Positive/Negative", use: "provides rapid qualitative urinary screening for HCG pregnancy hormone." },
-            { name: "Progesterone Hormone Test", price: 600, code: "EN022", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "Varies by cycle phase", use: "evaluates corpus luteum function, ovulation success, and early pregnancy viability." },
-            { name: "Prolactin Hormone Test", price: 500, code: "EN023", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "4 - 23 ng/mL", use: "diagnoses hyperprolactinemia, galactorrhea, and pituitary gland disorders." },
-            { name: "Prostate Specific Antigen (PSA) Test", price: 650, code: "EN024", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "< 4.0 ng/mL", use: "serves as a primary tumor biomarker for screening prostate gland conditions." },
-            { name: "Protein Total & Albumin-Globulin Ratio (A/G Ratio) Test", price: 300, code: "BC046", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Ratio 1.2 - 2.2", use: "helps differentiate liver disorders, kidney disease, and protein-losing conditions." },
-            { name: "Protein Total Blood Test", price: 140, code: "BC047", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "6.0 - 8.3 g/dL", use: "measures total serum protein concentrations including albumin and globulins." },
-            { name: "Prothrombin Time With INR (PT/INR) Test", price: 450, code: "HM019", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "INR 0.8 - 1.1", use: "monitors blood thinners (Warfarin) and evaluates extrinsic liver clotting pathways." },
-            { name: "Quadruple Marker Test", price: 3200, code: "EN025", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Varies by gestation", use: "is an advanced second-trimester maternal screening for fetal Down Syndrome and neural tube defects." },
-            { name: "RA (Rheumatoid Arthritis) Factor Titre Test", price: 450, code: "IM033", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "< 14 IU/mL", use: "helps confirm Rheumatoid Arthritis autoimmune joint inflammation." },
-            { name: "Reticulocyte Count Blood Test", price: 300, code: "HM020", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "0.5 - 2.5%", use: "checks bone marrow red blood cell production rate in response to anemia." },
-            { name: "Rubella IgG & IgM Antibody Test", price: 1000, code: "IM034", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Negative", use: "checks for active infection or protective immunity against German Measles." },
-            { name: "Rubella IgG Antibody ELISA Test", price: 600, code: "IM035", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Negative", use: "confirms long-term immune protection against the Rubella virus." },
-            { name: "Rubella IgM Antibody ELISA Test", price: 600, code: "IM036", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Negative", use: "detects recent active Rubella viral infection during preconception screening." },
-            { name: "Serum Iron Test", price: 400, code: "BC048", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "60 - 170 mcg/dL", use: "quantifies circulating iron levels bound to transferrin in blood." },
-            { name: "Sickling Test (Sickle Cell Smear)", price: 300, code: "HM021", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "screens for abnormal sickle-shaped hemoglobin causing sickle cell anemia." },
-            { name: "Sodium Blood Test", price: 180, code: "BC049", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "135 - 145 mEq/L", use: "checks crucial electrolyte fluid balances affecting neurological function." },
-            { name: "Sperm Analysis (Semen Analysis) Test", price: 400, code: "HM022", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "> 15 million/mL", use: "evaluates male fertile capacity by assessing sperm concentration, motility, and morphology." },
-            { name: "Stool Routine & Microscopic Test", price: 150, code: "HM023", icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "Normal flora", use: "detects intestinal parasites, bacterial infections, or digestive malabsorption." },
-            { name: "Testosterone Total Hormone Test", price: 500, code: "EN026", icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "Varies by gender/age", use: "evaluates male androgenic status, vitality, and female PCOS hormone imbalance." },
-            { name: "Thyroid Profile Free (FT3/FT4/TSH) Test", price: 750, code: "SP041", icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Multiple parameters", use: "provides the most precise clinical assessment of unbound active thyroid hormones." },
-            { name: "Thyroid Profile Total (T3/T4/TSH) Test", price: 350, code: "SP042", icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "Multiple parameters", use: "serves as the standard panel for diagnosing Hypothyroidism or Hyperthyroidism." },
-            { name: "Thyroid Stimulating Hormone (TSH) Test", price: 200, code: "EN027", icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "0.4 - 4.0 mIU/L", use: "is the frontline biomarker for screening pituitary-thyroid gland health." },
-            { name: "Thyroxine Total (T4) Test", price: 200, code: "EN028", icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "5.0 - 11.0 mcg/dL", use: "measures total thyroid hormone output to assess metabolic conditions." },
-            { name: "TIBC (Total Iron Binding Capacity) Blood Test", price: 400, code: "BC050", icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "240 - 450 mcg/dL", use: "measures the maximum capacity of transferrin proteins to carry iron." },
-            { name: "TORCH Profile - IgG & IgM Extensive", price: 4000, code: "SP043", icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "Negative", use: "comprehensively screens pregnant women for congenital viral and parasitic risks." },
-            { name: "TORCH Profile - IgG Extensive", price: 2200, code: "SP044", icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "Negative", use: "evaluates maternal baseline antibody immunity against TORCH infections." },
-            { name: "TORCH Profile - IgM Extensive", price: 2200, code: "SP045", icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "detects active acute TORCH infection risks during gestational care." },
-            { name: "Total & Differential Leucocyte Count (TLC/DLC) Blood Test", price: 200, code: "HM024", icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "4,000 - 11,000 cells/µL", use: "pinpoints specific white blood cell sub-types to differentiate bacterial, viral, or allergic causes." },
-            { name: "Triglycerides Blood Test", price: 180, code: "BC051", icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "< 150 mg/dL", use: "measures metabolic circulating fats strongly linked to heart disease and pancreatitis." },
-            { name: "Triiodothyronine Total (T3) Test", price: 200, code: "EN029", icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "71 - 180 ng/dL", use: "evaluates active T3 thyroid hormone output for hyperthyroidism confirmation." },
-            { name: "Triple Marker Test", price: 2800, code: "EN030", icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "Varies by gestation", use: "screens for second-trimester fetal genetic abnormalities like Trisomy 21." },
-            { name: "Troponin - I Blood Test-Rapid Card", price: 700, code: "IM037", icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "is an emergency cardiac biomarker used for rapid heart attack detection." },
-            { name: "Troponin T Blood Test-Rapid Card", price: 800, code: "IM038", icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Negative", use: "rapidly identifies acute myocardial damage during emergency chest pain." },
-            { name: "Typhoid IgG & IgM Antibody (Typhidot) Test", price: 450, code: "IM039", icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "Negative", use: "rapidly confirms acute or past Salmonella typhi bacterial infection." },
-            { name: "Urea Blood Test", price: 140, code: "BC052", icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "15 - 40 mg/dL", use: "measures protein breakdown waste to assess renal function and dehydration." },
-            { name: "Uric Acid Blood Test", price: 140, code: "BC053", icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "3.5 - 7.2 mg/dL", use: "diagnoses Gout, joint crystal deposits, and evaluates kidney stone risks." },
-            { name: "Urine Routine & Microscopic Test", price: 150, code: "HM025", icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Normal values", use: "screens for urinary tract infections (UTI), kidney disease, and glucosuria." },
-            { name: "VDRL (RPR) Test", price: 250, code: "IM040", icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "Non-Reactive", use: "serves as a routine screening test for Syphilis bacterial antibodies." },
-            { name: "Vitamin B12 Blood Test", price: 800, code: "BC054", icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "200 - 900 pg/mL", use: "detects deficiency causing peripheral neuropathy, memory issues, and megaloblastic anemia." },
-            { name: "Vitamin D 25-Hydroxy Test", price: 1000, code: "BC055", icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "30 - 100 ng/mL", use: "evaluates bone health, calcium absorption, and immune system status." },
-            { name: "VLDL Cholesterol Blood Test", price: 180, code: "BC056", icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "2 - 30 mg/dL", use: "measures very-low-density lipoproteins that contribute to arterial plaque accumulation." },
-            { name: "Widal Test (Typhoid Slide Method)", price: 200, code: "IM041", icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "Titer < 1:80", use: "is a traditional agglutination test used to screen for Typhoid fever antibodies." }
+            { name: "Absolute Basophils Count Blood Test", price: 160, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "0 - 300 cells/µL (0-1%)", use: "helps diagnose allergic reactions, parasitic conditions, and chronic inflammatory disorders." },
+            { name: "Absolute Eosinophil Count (AEC) Test", price: 100, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "40 - 440 cells/µL", use: "detects asthma, allergic rhinitis, skin rashes, and parasitic infections." },
+            { name: "Absolute Granulocyte Count Blood Test", price: 160, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "2,500 - 7,500 cells/µL", use: "monitors your immune health and detects acute bacterial infections or bone marrow disorders." },
+            { name: "Absolute Lymphocyte Count Blood Test", price: 160, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "1,000 - 4,800 cells/µL", use: "is crucial for detecting viral infections, immune deficiencies, and lymphatic conditions." },
+            { name: "Absolute Monocyte Count Blood Test", price: 160, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "200 - 1,000 cells/µL", use: "evaluates white blood cells to detect chronic infections, autoimmune diseases, or blood disorders." },
+            { name: "Absolute Neutrophil Count (ANC) Blood Test", price: 160, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "2,500 - 7,000 cells/µL", use: "is essential for assessing your body's ability to fight off bacterial infections." },
+            { name: "Absolute Reticulocyte Count Blood Test", price: 380, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "0.5 - 2.5% of RBCs", use: "evaluates bone marrow function and helps differentiate various types of anemia." },
+            { name: "Acid Phosphatase Total Blood Test", price: 400, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "0 - 5.5 U/L", use: "helps monitor prostate health and detects certain bone or liver metabolic diseases." },
+            { name: "ADA Test (Adenosine Deaminase), Serum", price: 600, icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "< 40 U/L", use: "is an accurate serum biomarker used primarily to help diagnose tuberculosis (TB) infections." },
+            { name: "Albumin Blood Test", price: 140, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "3.5 - 5.2 g/dL", use: "checks your liver and kidney function, as well as overall nutritional protein status." },
+            { name: "Alkaline Phosphatase Blood Test (ALP Test)", price: 140, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "44 - 147 IU/L", use: "is vital for detecting liver conditions, gallbladder obstructions, or bone disorders." },
+            { name: "ALT/SGPT Blood Test", price: 140, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "7 - 56 U/L", use: "monitors your liver health and detects early liver tissue inflammation or damage." },
+            { name: "Ammonia Blood Test", price: 1000, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "15 - 45 µg/dL", use: "evaluates severe liver dysfunction, hepatic encephalopathy, or urea cycle disorders." },
+            { name: "Amylase Blood Test", price: 420, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "30 - 110 U/L", use: "effectively monitors pancreatic health and detects acute or chronic pancreatitis." },
+            { name: "Anaemia Profile Basic", price: 1200, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Multiple parameters", use: "screens for iron deficiency, hemoglobin abnormalities, and basic red cell disorders." },
+            { name: "Anaemia Profile-Extensive", price: 1800, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Multiple parameters", use: "provides a complete evaluation of blood health, iron stores, Vitamin B12, and folic acid." },
+            { name: "Anti CCP (Cyclic Citrullinated Peptide) Test", price: 1050, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "< 20 u/mL", use: "is used for the early detection and specific diagnosis of rheumatoid arthritis." },
+            { name: "Anti Double Stranded DNA (Anti-dsDNA) Test", price: 1000, icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "< 30 IU/mL", use: "is a crucial autoimmune marker test used to confirm Systemic Lupus Erythematosus (SLE)." },
+            { name: "Anti Mullerian Hormone (AMH) Test", price: 1600, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "Varies by age/gender", use: "assesses ovarian reserve, egg quantity, and female fertility health." },
+            { name: "Anti Nuclear Antibody (ANA) Test", price: 600, icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative (Titer < 1:40)", use: "screens for systemic autoimmune disorders like Lupus, Scleroderma, and Sjögren's syndrome." },
+            { name: "Anti Nuclear Antibody (ANA) Test - IFA", price: 1100, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "Negative", use: "provides gold-standard immunofluorescence screening for complex autoimmune conditions." },
+            { name: "Anti Streptolysin O (ASO) Titre Blood Test", price: 400, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "< 200 IU/mL", use: "checks for recent Group A Streptococcus bacterial infections causing rheumatic fever." },
+            { name: "Anti-Thyroglobulin Antibody (Anti-Tg) Test", price: 1000, icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "< 116 IU/mL", use: "helps diagnose autoimmune thyroid diseases such as Hashimoto's thyroiditis." },
+            { name: "Anti-Thyroid Peroxidase (Anti-TPO) Antibody Test", price: 1000, icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "< 9 IU/mL", use: "detects antibodies against thyroid peroxidase to confirm autoimmune thyroid disorders." },
+            { name: "Apolipoprotein - A1 & B Blood Test", price: 1000, icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Varies by gender", use: "evaluates advanced cardiovascular disease risks by measuring atherogenic lipid proteins." },
+            { name: "Apolipoprotein - A1 Blood Test", price: 550, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "119 - 240 mg/dL", use: "measures protective HDL-associated proteins to assess long-term heart health." },
+            { name: "Apolipoprotein - B Blood Test", price: 550, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "55 - 125 mg/dL", use: "measures harmful LDL-associated proteins that contribute to arterial plaque buildup." },
+            { name: "AST/SGOT Blood Test", price: 140, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "8 - 40 U/L", use: "checks for liver cell injury, heart muscle damage, and muscle tissue disorders." },
+            { name: "B-Type Natriuretic Peptide (BNP) Blood Test", price: 2000, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "< 100 pg/mL", use: "is highly effective at diagnosing congestive heart failure and assessing cardiac strain." },
+            { name: "Beta HCG (Human Chorionic Gonadotropin) Test", price: 600, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "Varies by pregnancy week", use: "confirms pregnancy status and monitors early gestational development." },
+            { name: "Bilirubin Profile Blood Test", price: 240, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "0.1 - 1.2 mg/dL", use: "checks for jaundice, liver dysfunction, hemolysis, or bile duct obstructions." },
+            { name: "Blood Group & RH Factor Test", price: 150, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "A/B/O, Positive/Negative", use: "determines your ABO blood type and Rh factor for transfusions or pregnancy." },
+            { name: "Blood Urea Nitrogen (BUN) Test", price: 140, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "7 - 20 mg/dL", use: "evaluates how effectively your kidneys clear metabolic waste products from the blood." },
+            { name: "Brucella IgG & IgM Antibody Test", price: 1500, icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Negative", use: "detects specific antibodies to diagnose Brucellosis bacterial infection from livestock." },
+            { name: "C - Reactive Protein (CRP) Test", price: 380, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "< 10 mg/L", use: "is an acute phase reactant used to detect active body inflammation or acute infections." },
+            { name: "C - Reactive Protein (CRP) Test-Quantitative", price: 450, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "< 10 mg/L", use: "provides an exact quantitative measurement of systemic inflammatory activity." },
+            { name: "C-Peptide Test-Fasting", price: 1000, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "0.5 - 2.0 ng/mL", use: "evaluates endogenous insulin production to differentiate Type 1 and Type 2 diabetes." },
+            { name: "CA 125 (Cancer Antigen 125) Test", price: 800, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "< 35 U/mL", use: "is a tumor marker primarily utilized for monitoring ovarian cancer treatment response." },
+            { name: "CA 15.3 (Cancer Antigen 15.3) Test", price: 800, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "< 30 U/mL", use: "is a specialized tumor marker used in monitoring breast cancer recurrence." },
+            { name: "CA 19.9 (Cancer Antigen 19.9) Test", price: 800, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "< 37 U/mL", use: "is a tumor marker for monitoring pancreatic, gallbladder, or gastrointestinal cancers." },
+            { name: "Calcium Blood Test", price: 180, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "8.6 - 10.3 mg/dL", use: "checks bone density health and detects parathyroid or renal function disorders." },
+            { name: "Cardiac Profile - Basic", price: 1000, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Multiple parameters", use: "assesses overall heart health, lipid risks, and myocardial disease indicators." },
+            { name: "CEA (Carcinoembryonic Antigen) Test", price: 600, icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "< 2.5 ng/mL", use: "is a broad-spectrum tumor marker test used to monitor gastrointestinal cancers." },
+            { name: "Ceruloplasmin Test", price: 1000, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "20 - 60 mg/dL", use: "helps diagnose Wilson's disease and copper transport metabolic abnormalities." },
+            { name: "Chikungunya IgM Card Test", price: 600, icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "provides rapid qualitative screening for acute Chikungunya viral infection." },
+            { name: "Chikungunya IgM ELISA Test", price: 600, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "Negative", use: "offers high-sensitivity ELISA confirmation for Chikungunya virus antibodies." },
+            { name: "Chloride Blood Test", price: 180, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "96 - 106 mEq/L", use: "evaluates body electrolyte homeostasis and blood acid-base equilibrium." },
+            { name: "Cholesterol Total Blood Test", price: 140, icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "< 200 mg/dL", use: "measures total circulating fats to evaluate risk for coronary artery disease." },
+            { name: "Cholinesterase Blood Test", price: 600, icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "8 - 18 U/mL", use: "detects organophosphate pesticide exposure and assesses liver synthetic function." },
+            { name: "CK MB Blood Test", price: 600, icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "3 - 5% of total CK", use: "is a cardiac enzyme marker used to help diagnose acute myocardial infarction." },
+            { name: "CK NAC Blood Test (CPK Test)", price: 400, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "22 - 198 U/L", use: "measures total creatine kinase to evaluate skeletal or cardiac muscle injury." },
+            { name: "Complete Blood Count (CBC) Test", price: 300, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "Multiple parameters", use: "evaluates hemoglobin, RBCs, WBCs, and platelets to detect anemia or infections." },
+            { name: "Cortisol Serum Test-Fasting", price: 600, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "5 - 25 mcg/dL (Morning)", use: "evaluates adrenal gland health and screens for Cushing's or Addison's disease." },
+            { name: "Cotitne/Nicotine Test, Urine", price: 1500, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Negative", use: "detects nicotine metabolites in urine for smoking status verification." },
+            { name: "Creatinine Blood Test", price: 140, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "0.6 - 1.2 mg/dL", use: "is a primary quantitative indicator of renal filtration health and kidney function." },
+            { name: "D-Dimer Test-Quantitative", price: 1100, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 0.50 mg/L FEU", use: "helps rule out dangerous intravascular blood clots like DVT or Pulmonary Embolism." },
+            { name: "Dengue Duo Screening Test (Card Method)", price: 1000, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "provides rapid dual screening for Dengue NS1 antigen and IgG/IgM antibodies." },
+            { name: "Dengue IgG & IgM Antibody Test", price: 600, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Negative", use: "detects specific immune antibodies to confirm recent or past Dengue fever." },
+            { name: "Dengue IgG & IgM ELISA Test", price: 1000, icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Negative", use: "is the gold-standard ELISA test for detecting Dengue virus antibodies." },
+            { name: "Dengue NS1 Antigen ELISA Test", price: 600, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "Negative", use: "provides high-accuracy ELISA detection of Dengue viral antigen on Day 1 of fever." },
+            { name: "Dengue NS1 Antigen Test", price: 600, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "Negative", use: "detects the presence of Dengue viral antigen in the early acute fever phase." },
+            { name: "Diabetes Screening - Basic", price: 500, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Multiple parameters", use: "provides essential fasting sugar and HbA1c screening for diabetes monitoring." },
+            { name: "Double Marker (First Trimester) Test", price: 2200, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Varies by gestation", use: "screens for fetal chromosomal abnormalities like Down Syndrome in early pregnancy." },
+            { name: "Electrolytes Blood Test (Na/K/Cl)", price: 450, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "Multiple parameters", use: "measures essential blood salts (Sodium, Potassium, Chloride) for fluid balance." },
+            { name: "ESR Blood Test", price: 100, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "0 - 22 mm/hr", use: "detects generalized inflammation associated with chronic infections or autoimmune conditions." },
+            { name: "Estradiol (E2) Hormone Test", price: 600, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Varies by cycle phase", use: "evaluates ovarian follicular development and primary estrogen hormonal levels." },
+            { name: "Ferritin Blood Test", price: 600, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "24 - 336 mcg/L", use: "measures total iron storage reserves in the body to detect latent anemia." },
+            { name: "Fever Profile Extensive", price: 1600, icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "Multiple parameters", use: "comprehensively screens for Malaria, Dengue, Typhoid, CBC, and Urine parameters." },
+            { name: "Fever Profile-Basic", price: 1000, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "Multiple parameters", use: "provides essential initial pathology screening for acute unexplained fever." },
+            { name: "Fibrinogen Blood Test", price: 600, icon: "fa-bolt", bg: "#fef2f2", color: "#991b1b", nv: "200 - 400 mg/dL", use: "evaluates essential coagulation factors to assess bleeding or clotting disorders." },
+            { name: "Folic Acid Blood Test", price: 800, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "2.7 - 17.0 ng/mL", use: "checks Vitamin B9 levels to diagnose megaloblastic anemia and cellular health." },
+            { name: "Free And Total Prostate Specific Antigen (PSA) Test", price: 1200, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "Ratio evaluation", use: "provides detailed screening to differentiate benign prostatic hyperplasia and prostate cancer." },
+            { name: "Free Testosterone Test", price: 1000, icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "Varies by gender/age", use: "measures the unattached, biologically active form of testosterone in circulation." },
+            { name: "Free Thyroxine (FT4) Test", price: 380, icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "0.8 - 1.8 ng/dL", use: "measures active unbound T4 thyroid hormone unaffected by protein binding variations." },
+            { name: "Free Triiodothyronine (FT3) Test", price: 380, icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "2.3 - 4.1 pg/mL", use: "assesses metabolic thyroid activity by quantifying free unbound T3 hormone." },
+            { name: "FSH Hormone Test", price: 500, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "Varies by gender/cycle", use: "evaluates pituitary function, egg development, sperm production, and menopause." },
+            { name: "G6PD Blood Test", price: 600, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "7.0 - 20.5 U/g Hb", use: "screens for enzyme deficiency that causes hemolytic anemia after drug exposure." },
+            { name: "Gamma GT (GGT) Blood Test", price: 280, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "9 - 48 U/L", use: "serves as a sensitive biomarker for bile duct obstruction and heavy alcohol usage." },
+            { name: "Glucose Fasting & Post Prandial (F & PP) Blood Test", price: 150, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "F:<100, PP:<140 mg/dL", use: "evaluates blood glucose regulation before fasting and 2 hours post-meal." },
+            { name: "Glucose Fasting Blood Test", price: 80, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "70 - 99 mg/dL", use: "is the standard baseline test for detecting diabetes mellitus after overnight fasting." },
+            { name: "Glucose Post Prandial Blood Test", price: 80, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 140 mg/dL", use: "measures post-meal glycemic control and insulin responsiveness." },
+            { name: "Glucose Random (RBS) Blood Test", price: 80, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "< 200 mg/dL", use: "provides an immediate random check of current circulating blood sugar levels." },
+            { name: "Glucose Tolerance Test (GTT) - (3 Values)", price: 250, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Varies over time", use: "diagnoses gestational diabetes during pregnancy via timed glucose challenges." },
+            { name: "H. Pylori IgG & IgM Antibody Test", price: 1000, icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Negative", use: "detects Helicobacter pylori antibodies responsible for gastritis and stomach ulcers." },
+            { name: "H. Pylori IgM Antibody Test", price: 600, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "Negative", use: "identifies acute active gastric bacterial infection caused by H. Pylori." },
+            { name: "HBA1C Blood Test", price: 450, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "< 5.7%", use: "measures glycated hemoglobin to reflect average 3-month blood sugar control." },
+            { name: "Hepatitis A Virus (HAV) IgM Antibody Test", price: 800, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "confirms acute Hepatitis A viral infection affecting liver function." },
+            { name: "Hepatitis B Surface (HBsAg) Antigen Test", price: 300, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Negative", use: "is the primary viral marker test used to diagnose active Hepatitis B infection." },
+            { name: "Hepatitis B Surface (HBsAg) Antigen Test-Quantitative", price: 800, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "< 0.05 IU/mL", use: "quantifies Hepatitis B viral surface antigen concentration in serum." },
+            { name: "Hepatitis C Virus (HCV) Antibody Test", price: 450, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Negative", use: "screens for exposure to Hepatitis C viral liver infection." },
+            { name: "Hepatitis E Virus (HEV) IgM Antibody Test", price: 800, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Negative", use: "diagnoses acute waterborne Hepatitis E viral liver infection." },
+            { name: "Herpes Simplex Virus (HSV) Type 1 & 2 IgG & IgM Antibody Test", price: 2000, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Negative", use: "screens for past exposure and acute viral activity of HSV-1 and HSV-2." },
+            { name: "HIV 1 & 2 Antibody Test", price: 350, icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "Non-Reactive", use: "is an essential confidential screening test for Human Immunodeficiency Virus." },
+            { name: "HIV DUO (HIV Ag/Ab) Test", price: 800, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "Non-Reactive", use: "provides 4th-generation early detection of HIV p24 antigen and antibodies." },
+            { name: "HLA B-27 (Flow Cytometry) Test", price: 2500, icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "diagnoses genetic predisposition to Ankylosing Spondylitis and spinal arthritis." },
+            { name: "Homocysteine Blood Test", price: 1000, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "4 - 15 µmol/L", use: "evaluates independent amino acid risk factors for stroke and cardiovascular disease." },
+            { name: "HS CRP (High Sensitivity CRP) Test", price: 600, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "< 1.0 mg/L (Low Risk)", use: "accurately predicts long-term risk of developing coronary artery disease." },
+            { name: "IgE Total Antibody Test", price: 600, icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "< 100 kU/L", use: "quantifies total circulating allergic antibodies to diagnose asthma or skin allergies." },
+            { name: "Indirect Coombs Test (ICT)", price: 600, icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "Negative", use: "screens maternal blood for anti-Rh antibodies during pregnancy." },
+            { name: "Infectious Mononucleosis (Monospot/Paul Bunnell) Test", price: 600, icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Negative", use: "diagnoses glandular fever caused by Epstein-Barr viral infection." },
+            { name: "Insulin Fasting & Post Prandial (F & PP) Test", price: 1200, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "Multiple values", use: "evaluates pancreatic insulin secretion and metabolic insulin resistance." },
+            { name: "Insulin Fasting Test", price: 600, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "2.6 - 24.9 µIU/mL", use: "evaluates fasting insulin resistance and helps investigate metabolic syndrome." },
+            { name: "Iron Studies Test", price: 800, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "Multiple parameters", use: "provides a complete evaluation of serum iron, TIBC, and ferritin saturation." },
+            { name: "Kidney Function Test (KFT)", price: 600, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Multiple parameters", use: "evaluates renal metabolic filtration parameters including Urea, Creatinine, and Uric Acid." },
+            { name: "LDH Blood Test (Lactate Dehydrogenase Test)", price: 400, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "140 - 280 U/L", use: "detects widespread cellular breakdown, anemia, liver tissue injury, or lung disease." },
+            { name: "LDL Cholesterol Blood Test", price: 200, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 100 mg/dL", use: "measures 'bad' cholesterol directly linked to arterial plaque buildup." },
+            { name: "Leptospira IgG & IgM Antibody Test", price: 1500, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "confirms Leptospirosis bacterial infection spread via contaminated water." },
+            { name: "LH Hormone Test", price: 500, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Varies by gender/cycle", use: "triggers ovulation assessment and evaluates pituitary reproductive health." },
+            { name: "Lipase Blood Test", price: 450, icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "0 - 160 U/L", use: "is the gold-standard pancreatic enzyme test to diagnose acute pancreatitis." },
+            { name: "Lipid Profile Test", price: 500, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "Multiple parameters", use: "measures total cholesterol, HDL, LDL, VLDL, and triglycerides for heart health." },
+            { name: "Lipoprotein (A) Blood Test", price: 800, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "< 30 mg/dL", use: "evaluates genetic inherited risk factors for premature heart disease." },
+            { name: "Liver Function Test (LFT)", price: 600, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Multiple parameters", use: "evaluates liver enzymes (SGOT, SGPT, ALP), proteins, and bilirubin profiles." },
+            { name: "Lupus Anticoagulant (LA) Test", price: 1800, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Negative", use: "investigates autoantibodies causing abnormal blood clot formation or pregnancy loss." },
+            { name: "Magnesium Blood Test", price: 450, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "1.7 - 2.2 mg/dL", use: "evaluates crucial serum minerals affecting cardiac rhythm and neuromuscular function." },
+            { name: "Malarial Antigen (VIVAX & FALCIPARUM) Test", price: 300, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Negative", use: "provides rapid antigen differentiation between P. vivax and P. falciparum malaria." },
+            { name: "Malarial Parasite (MP) Slide Smear Test", price: 150, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Negative", use: "is the microscopic gold-standard slide method to identify malarial parasites." },
+            { name: "Microalbuminuria Test-Urine", price: 500, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "< 30 mg/g creatinine", use: "detects microscopic protein leakage in urine for early diabetic kidney damage." },
+            { name: "Microalbuminuria/Creatinine Ratio-Urine", price: 650, icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "< 30 mg/g", use: "provides precise monitoring of early hypertensive and diabetic nephropathy." },
+            { name: "NT Pro-BNP Blood Test", price: 2500, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "< 125 pg/mL", use: "serves as a quantitative biomarker to evaluate heart failure severity." },
+            { name: "Occult Blood Test-Stool", price: 200, icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "detects hidden gastrointestinal bleeding associated with ulcers or polyps." },
+            { name: "P-Anca & C-Anca Antibody Test", price: 1800, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "Negative", use: "helps diagnose autoimmune vasculitis diseases affecting small blood vessels." },
+            { name: "Packed Cell Volume (PCV) Blood Test", price: 150, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "38 - 52%", use: "measures the volume percentage of red blood cells in whole blood." },
+            { name: "Pancreas Profile", price: 850, icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "Multiple parameters", use: "combines Amylase and Lipase enzyme parameters to evaluate pancreatic health." },
+            { name: "Parathyroid Hormone (PTH) Test", price: 1200, icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "10 - 55 pg/mL", use: "regulates serum calcium and phosphorus balance to diagnose parathyroid gland disorders." },
+            { name: "Peripheral Blood Smear For Morphology Test", price: 250, icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Normal morphology", use: "microscopically evaluates blood cell structural morphology to detect blood diseases." },
+            { name: "Phosphorus Blood Test", price: 180, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "2.5 - 4.5 mg/dL", use: "evaluates bone metabolism and renal tubular mineral absorption." },
+            { name: "Platelet Count Blood Test", price: 150, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "150,000 - 450,000/µL", use: "checks blood clotting cell count to evaluate Dengue or bleeding disorders." },
+            { name: "Potassium Blood Test", price: 180, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "3.5 - 5.0 mEq/L", use: "is essential for regulating cardiac electrical conduction and muscular function." },
+            { name: "Pre-Operative Profile-Basic", price: 1600, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Multiple parameters", use: "provides compulsory health screening prior to surgical anesthesia." },
+            { name: "Pregnancy Test-Urine", price: 150, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "Positive/Negative", use: "provides rapid qualitative urinary screening for HCG pregnancy hormone." },
+            { name: "Progesterone Hormone Test", price: 600, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "Varies by cycle phase", use: "evaluates corpus luteum function, ovulation success, and early pregnancy viability." },
+            { name: "Prolactin Hormone Test", price: 500, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "4 - 23 ng/mL", use: "diagnoses hyperprolactinemia, galactorrhea, and pituitary gland disorders." },
+            { name: "Prostate Specific Antigen (PSA) Test", price: 650, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "< 4.0 ng/mL", use: "serves as a primary tumor biomarker for screening prostate gland conditions." },
+            { name: "Protein Total & Albumin-Globulin Ratio (A/G Ratio) Test", price: 300, icon: "fa-arrows-down-to-line", bg: "#fff1f2", color: "#e11d48", nv: "Ratio 1.2 - 2.2", use: "helps differentiate liver disorders, kidney disease, and protein-losing conditions." },
+            { name: "Protein Total Blood Test", price: 140, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "6.0 - 8.3 g/dL", use: "measures total serum protein concentrations including albumin and globulins." },
+            { name: "Prothrombin Time With INR (PT/INR) Test", price: 450, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "INR 0.8 - 1.1", use: "monitors blood thinners (Warfarin) and evaluates extrinsic liver clotting pathways." },
+            { name: "Quadruple Marker Test", price: 3200, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Varies by gestation", use: "is an advanced second-trimester maternal screening for fetal Down Syndrome and neural tube defects." },
+            { name: "RA (Rheumatoid Arthritis) Factor Titre Test", price: 450, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "< 14 IU/mL", use: "helps confirm Rheumatoid Arthritis autoimmune joint inflammation." },
+            { name: "Reticulocyte Count Blood Test", price: 300, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "0.5 - 2.5%", use: "checks bone marrow red blood cell production rate in response to anemia." },
+            { name: "Rubella IgG & IgM Antibody Test", price: 1000, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "Negative", use: "checks for active infection or protective immunity against German Measles." },
+            { name: "Rubella IgG Antibody ELISA Test", price: 600, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "Negative", use: "confirms long-term immune protection against the Rubella virus." },
+            { name: "Rubella IgM Antibody ELISA Test", price: 600, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Negative", use: "detects recent active Rubella viral infection during preconception screening." },
+            { name: "Serum Iron Test", price: 400, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "60 - 170 mcg/dL", use: "quantifies circulating iron levels bound to transferrin in blood." },
+            { name: "Sickling Test (Sickle Cell Smear)", price: 300, icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "screens for abnormal sickle-shaped hemoglobin causing sickle cell anemia." },
+            { name: "Sodium Blood Test", price: 180, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "135 - 145 mEq/L", use: "checks crucial electrolyte fluid balances affecting neurological function." },
+            { name: "Sperm Analysis (Semen Analysis) Test", price: 400, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "> 15 million/mL", use: "evaluates male fertile capacity by assessing sperm concentration, motility, and morphology." },
+            { name: "Stool Routine & Microscopic Test", price: 150, icon: "fa-bacteria", bg: "#fefce8", color: "#a16207", nv: "Normal flora", use: "detects intestinal parasites, bacterial infections, or digestive malabsorption." },
+            { name: "Testosterone Total Hormone Test", price: 500, icon: "fa-pills", bg: "#ecfeff", color: "#0891b2", nv: "Varies by gender/age", use: "evaluates male androgenic status, vitality, and female PCOS hormone imbalance." },
+            { name: "Thyroid Profile Free (FT3/FT4/TSH) Test", price: 750, icon: "fa-sun", bg: "#fff7ed", color: "#ea580c", nv: "Multiple parameters", use: "provides the most precise clinical assessment of unbound active thyroid hormones." },
+            { name: "Thyroid Profile Total (T3/T4/TSH) Test", price: 350, icon: "fa-droplet", bg: "#fff7ed", color: "#c2410c", nv: "Multiple parameters", use: "serves as the standard panel for diagnosing Hypothyroidism or Hyperthyroidism." },
+            { name: "Thyroid Stimulating Hormone (TSH) Test", price: 200, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "0.4 - 4.0 mIU/L", use: "is the frontline biomarker for screening pituitary-thyroid gland health." },
+            { name: "Thyroxine Total (T4) Test", price: 200, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "5.0 - 11.0 mcg/dL", use: "measures total thyroid hormone output to assess metabolic conditions." },
+            { name: "TIBC (Total Iron Binding Capacity) Blood Test", price: 400, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "240 - 450 mcg/dL", use: "measures the maximum capacity of transferrin proteins to carry iron." },
+            { name: "TORCH Profile - IgG & IgM Extensive", price: 4000, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "Negative", use: "comprehensively screens pregnant women for congenital viral and parasitic risks." },
+            { name: "TORCH Profile - IgG Extensive", price: 2200, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "Negative", use: "evaluates maternal baseline antibody immunity against TORCH infections." },
+            { name: "TORCH Profile - IgM Extensive", price: 2200, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "detects active acute TORCH infection risks during gestational care." },
+            { name: "Total & Differential Leucocyte Count (TLC/DLC) Blood Test", price: 200, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "4,000 - 11,000 cells/µL", use: "pinpoints specific white blood cell sub-types to differentiate bacterial, viral, or allergic causes." },
+            { name: "Triglycerides Blood Test", price: 180, icon: "fa-chart-line", bg: "#fff1f2", color: "#e11d48", nv: "< 150 mg/dL", use: "measures metabolic circulating fats strongly linked to heart disease and pancreatitis." },
+            { name: "Triiodothyronine Total (T3) Test", price: 200, icon: "fa-cubes-stacked", bg: "#f8fafc", color: "#475569", nv: "71 - 180 ng/dL", use: "evaluates active T3 thyroid hormone output for hyperthyroidism confirmation." },
+            { name: "Triple Marker Test", price: 2800, icon: "fa-chart-line", bg: "#fff7ed", color: "#d97706", nv: "Varies by gestation", use: "screens for second-trimester fetal genetic abnormalities like Trisomy 21." },
+            { name: "Troponin - I Blood Test-Rapid Card", price: 700, icon: "fa-magnet", bg: "#fef2f2", color: "#dc2626", nv: "Negative", use: "is an emergency cardiac biomarker used for rapid heart attack detection." },
+            { name: "Troponin T Blood Test-Rapid Card", price: 800, icon: "fa-person-rays", bg: "#fefce8", color: "#ca8a04", nv: "Negative", use: "rapidly identifies acute myocardial damage during emergency chest pain." },
+            { name: "Typhoid IgG & IgM Antibody (Typhidot) Test", price: 450, icon: "fa-heart-pulse", bg: "#fdf2f8", color: "#db2777", nv: "Negative", use: "rapidly confirms acute or past Salmonella typhi bacterial infection." },
+            { name: "Urea Blood Test", price: 140, icon: "fa-capsules", bg: "#ecfdf5", color: "#059669", nv: "15 - 40 mg/dL", use: "measures protein breakdown waste to assess renal function and dehydration." },
+            { name: "Uric Acid Blood Test", price: 140, icon: "fa-venus-mars", bg: "#eef2ff", color: "#4f46e5", nv: "3.5 - 7.2 mg/dL", use: "diagnoses Gout, joint crystal deposits, and evaluates kidney stone risks." },
+            { name: "Urine Routine & Microscopic Test", price: 150, icon: "fa-user-nurse", bg: "#fef2f2", color: "#b91c1c", nv: "Normal values", use: "screens for urinary tract infections (UTI), kidney disease, and glucosuria." },
+            { name: "VDRL (RPR) Test", price: 250, icon: "fa-stopwatch", bg: "#eff6ff", color: "#1d4ed8", nv: "Non-Reactive", use: "serves as a routine screening test for Syphilis bacterial antibodies." },
+            { name: "Vitamin B12 Blood Test", price: 800, icon: "fa-mars", bg: "#fffbeb", color: "#d97706", nv: "200 - 900 pg/mL", use: "detects deficiency causing peripheral neuropathy, memory issues, and megaloblastic anemia." },
+            { name: "Vitamin D 25-Hydroxy Test", price: 1000, icon: "fa-bolt", bg: "#fef2f2", color: "#dc2626", nv: "30 - 100 ng/mL", use: "evaluates bone health, calcium absorption, and immune system status." },
+            { name: "VLDL Cholesterol Blood Test", price: 180, icon: "fa-heart-circle-exclamation", bg: "#fff1f2", color: "#be123c", nv: "2 - 30 mg/dL", use: "measures very-low-density lipoproteins that contribute to arterial plaque accumulation." },
+            { name: "Widal Test (Typhoid Slide Method)", price: 200, icon: "fa-heart-circle-check", bg: "#fff7ed", color: "#9a3412", nv: "Titer < 1:80", use: "is a traditional agglutination test used to screen for Typhoid fever antibodies." }
         ];
 
-        // Dynamic SEO Description Generator
+        // Advanced 2000+ Character Dynamic SEO Description Generator with Embedded Most Searched Keywords & Udaipur Locations
         function generate2000CharSeoDescription(test) {
             return `
-            <div style="text-align: left; font-size: 13px; line-height: 1.7; color: #334155; margin-bottom: 20px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; height: 350px; overflow-y: auto;">
-                <p style="margin-bottom: 12px;"><strong>Diagnostic Overview:</strong> The <strong>${test.name}</strong> is a specialized diagnostic test provided by Patel Diagnostic Udaipur. This test ${test.use} Accurate clinical evaluation of this marker allows doctors to determine your health baseline, detect subclinical conditions, and plan appropriate treatments.</p>
+            <div style="text-align: left; font-size: 13px; line-height: 1.7; color: #334155; margin-bottom: 20px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; max-height: 380px; overflow-y: auto;">
+                <p style="margin-bottom: 12px;"><strong>Comprehensive Diagnostic Overview:</strong> The <strong>${test.name}</strong> is a specialized clinical pathology test provided by Patel Diagnostic Udaipur. This essential test ${test.use} Accurate diagnostic evaluation of this parameter allows expert medical practitioners to establish health baselines, detect subclinical disorders early, and formulate tailored clinical treatment strategies.</p>
                 
-                <p style="margin-bottom: 12px;"><strong>Normal Reference Value:</strong> The standard clinical reference range for ${test.name} is <strong>${test.nv}</strong>. *Note: Values may vary based on laboratory methodology and individual factors; always consult your physician for final report clinical correlation.*</p>
+                <p style="margin-bottom: 12px;"><strong>Normal Biological Reference Value:</strong> The standard clinical reference range for ${test.name} is <strong>${test.nv}</strong>. *Note: Biological reference intervals can fluctuate based on age, gender, pregnancy status, and advanced automated analyzer specifications. Always consult your physician for professional medical interpretation.*</p>
                 
-                <p style="margin-bottom: 12px;"><strong>When to Book:</strong> Physicians commonly prescribe this test if you experience symptoms like persistent fatigue, fever, unexplained pain, or require routine monitoring for chronic disease management.</p>
+                <p style="margin-bottom: 12px;"><strong>Clinical Indications & When to Test:</strong> Healthcare providers frequently prescribe the ${test.name} when patients experience symptoms such as chronic fatigue, weakness, unexplained fever, metabolic disturbances, or during routine preventive executive health checkups. It is also instrumental for monitoring ongoing therapeutic treatments.</p>
                 
-                <p style="margin-bottom: 12px;"><strong>Patel Diagnostic Advantage:</strong> We are Udaipur's premier door-to-door mobile pathology service. Enjoy 100% free home sample collection without the need to visit a lab. Our phlebotomists follow strict safety protocols at your home or office. We serve all Udaipur areas including Hiran Magri, Shobhagpura, Fatehpura, Sukher, and Old City.</p>
+                <p style="margin-bottom: 12px;"><strong>Sample Collection & Pre-Test Guidelines:</strong> A professional venous blood draw is required. Depending on specific medical panels, certain tests require 8 to 12 hours of overnight fasting, while others have no dietary restrictions. Our dedicated support team provides complete instructions when you book your home visit.</p>
+                
+                <p style="margin-bottom: 12px;"><strong>100% Free Door-to-Door Home Sample Collection Across All Udaipur Locations:</strong> Patel Diagnostic operates exclusively as a mobile door-to-door home collection service in Udaipur. You never need to travel or wait in a laboratory queue. Our certified phlebotomists adhere to strict aseptic protocols using single-use vacuum tubes right at your living room. We proudly provide free doorstep collection across every mapped locality in Udaipur, including:</p>
+                
+                <p style="margin-bottom: 12px; font-size: 12px; color: #475569; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <strong>Walled City & Central Hubs:</strong> Jagdish Chowk, Chandpole, Surajpole, Udiapole, Delhi Gate, Chetak Circle, Shastri Circle, Bapu Bazar, Town Hall, Lal Ghat, Gangaur Ghat, Brahmpuri, Silawatwari, Gadiya Devra, Nada Khada, Teliwara, Bohrwadi, Bhatiyani Chohatta, Rao Ji Ka Hata, Hathipole, Ayad, Sevashram, Siphon, Madhuban, Ashok Nagar, Bhupalpura, Fatehpura, Panchwati, Saheli Nagar, University Road, Meera Nagar.<br><br>
+                    <strong>Urban Residential Sectors:</strong> Hiran Magri (Sectors 1 to 14), Shobhagpura, Navratna Complex, Chitrakoot Nagar, Ganpati Nagar, Keshav Nagar, Adarsh Nagar, Subhash Nagar, Ganesh Nagar, Bedla, Badi, Hawala, Lakhawali, Tiger Hills, Badgaon, Pratap Nagar, Balicha, Goverdhan Vilas, Savina, Eklingpura, Ambamata, Malla Talai, Panerion Ki Madri, Tekri, Pula, Debari.<br><br>
+                    <strong>Extended Rural & Industrial Belts:</strong> Kaladwas, Umarda, Alsigarh, Ubeshwar Ji, Nandeshwar, Kailashpuri, Sisarma, Kavita Village, Amberi, Pai, Jhadol, Gogunda, Mavli, Vallabhnagar, Bhinder, Kherwara, Rishabhdeo, Salumbar, Sarada, Zawar Mines, Dabok Airport, Sakroda, Gudli, Kurabad, Semari, Sayra, Fatehnagar.
+                </p>
+
+                <p style="margin-bottom: 12px;"><strong>NABL Accredited Lab Reports via WhatsApp:</strong> All collected biological samples are securely transported under strict cold-chain conditions to NABL-accredited laboratory partners. Your 100% accurate, verified digital medical report is delivered straight to your WhatsApp within 24 hours.</p>
                 
                 <div style="background: #ffffff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent); margin-top: 15px;">
-                    <strong style="color: var(--primary); font-size: 13px;">High-Volume Search Queries:</strong>
-                    <ul style="margin-top: 8px; padding-left: 20px; font-size: 12px; color: #475569; list-style-type: circle;">
-                        <li>${test.name} test price in Udaipur | ${test.name} lab Udaipur</li>
-                        <li>Home blood sample collection in Udaipur near me</li>
-                        <li>Pathology lab in Udaipur for ${test.name}</li>
-                        <li>Best diagnostic center for ${test.name} Udaipur</li>
-                        <li>${test.name} normal value interpretation Udaipur</li>
-                        <li>Door to door blood test Udaipur (Hiran Magri, Shobhagpura, Fatehpura)</li>
-                        <li>Affordable ${test.name} lab test Udaipur</li>
-                        <li>Patel Diagnostic home collection service booking</li>
-                        <li>Online medical test booking Udaipur | NABL lab Udaipur</li>
+                    <strong style="color: var(--primary); font-size: 13px;">High-Volume Search Queries & Local Keywords for ${test.name}:</strong>
+                    <ul style="margin-top: 8px; padding-left: 20px; font-size: 11.5px; color: #475569; line-height: 1.6;">
+                        <li>${test.name} test price in Udaipur | ${test.name} cost near me</li>
+                        <li>Home blood sample collection in Udaipur (Hiran Magri, Shobhagpura, Fatehpura)</li>
+                        <li>Pathology lab in Udaipur for ${test.name} with free home visit</li>
+                        <li>NABL accredited lab report online for ${test.name} Udaipur</li>
+                        <li>Best diagnostic center and blood testing lab near me in Udaipur</li>
+                        <li>Affordable ${test.name} test booking with lowest price guarantee</li>
+                        <li>Patel Diagnostic Udaipur home collection phone number 8209746239</li>
                     </ul>
                 </div>
             </div>`;
         }
 
-        const packages = [
-            { code: "PDU FIT - 01", name: "Essential Vital", price: 899, old: 1678, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile (T3,T4,TSH)" },
-            { code: "PDU FIT - 02", name: "Comprehensive Care", price: 1399, old: 2336, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c" },
-            { code: "PDU FIT - 03", name: "Advanced Health B12", price: 1699, old: 2716, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-B12" },
-            { code: "PDU FIT - 04", name: "Advanced Health Vit-D", price: 1999, old: 2816, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D" },
-            { code: "PDU BEST", name: "Ultimate Health Checkup", price: 2499, old: 4950, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D, Vitamin-B12, HbA1c" },
-        ];
-        
-        // Populate Packages Grid
-        const pkgGrid = document.getElementById('package-grid');
-        packages.forEach(pkg => {
-            pkgGrid.innerHTML += `
-                <div class="package-card">
-                    <span class="tag">${pkg.code}</span>
-                    <h3>${pkg.name}</h3>
-                    <div class="includes" style="min-height: 85px;"><i class="fas fa-stethoscope" style="color: var(--accent);"></i> Includes: ${pkg.tests}</div>
-                    <div class="includes" style="color: var(--primary); font-weight: 600;"><i class="fas fa-home"></i> Free Home Collection</div>
-                    <div style="display:flex; align-items: baseline; gap: 10px; margin-top: 15px; margin-bottom: 20px;">
-                        <span style="font-size: 26px; font-weight: 800; color: var(--text-main);">₹${pkg.price}</span>
-                        <span style="text-decoration: line-through; color: #94a3b8; font-size: 15px;">₹${pkg.old}</span>
-                    </div>
-                    <button onclick="addToCart('${pkg.name}', ${pkg.price}, '${pkg.code}')" class="btn-action-fill">Add to Cart</button>
-                </div>`;
-        });
+        // Dynamic Router to handle individual test pages via URL Hash (e.g., #test=Vitamin%20D%2025-Hydroxy%20Test)
+        window.addEventListener('hashchange', checkURLRoute);
+        window.addEventListener('DOMContentLoaded', checkURLRoute);
 
-        // Dynamic Test Search Grid
+        function checkURLRoute() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#test=')) {
+                const testName = decodeURIComponent(hash.replace('#test=', ''));
+                const foundTest = tests.find(t => t.name.toLowerCase() === testName.toLowerCase());
+                if (foundTest) {
+                    renderSingleTestPage(foundTest);
+                }
+            }
+        }
+
+        function renderSingleTestPage(test) {
+            document.title = `${test.name} Price in Udaipur | Patel Diagnostic Home Collection`;
+            const mainContainer = document.querySelector('.container');
+            mainContainer.innerHTML = `
+                <div style="margin: 40px 0 20px;">
+                    <a href="#" onclick="window.location.hash=''; location.reload(); return false;" style="color: var(--primary); font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 16px;"><i class="fas fa-arrow-left"></i> Back to All Tests & Packages</a>
+                </div>
+                <div style="background: white; padding: 45px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 6px solid var(--accent);">
+                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px; flex-wrap: wrap; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <div style="background:${test.bg}; color:${test.color}; width: 75px; height: 75px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px;">
+                                <i class="fa-solid ${test.icon}"></i>
+                            </div>
+                            <div>
+                                <h1 style="font-size: 28px; color: var(--primary); margin-bottom: 5px;">${test.name} Price & Home Collection in Udaipur</h1>
+                                <p style="color: var(--text-muted); font-size: 16px;"><i class="fas fa-home" style="color: var(--primary);"></i> 100% Free Door-to-Door Home Sample Collection across all Udaipur Localities</p>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://share.google/OCkSDNPu9QUNX47RU" target="_blank" class="btn-primary" style="background: #4f46e5; padding: 12px 20px; font-size: 14px;"><i class="fas fa-map-marker-alt"></i> View On Google</a>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex; align-items: baseline; gap: 15px; margin-bottom: 30px; background: var(--bg-light); padding: 20px; border-radius: 12px;">
+                        <span style="font-size: 32px; font-weight: 800; color: var(--accent);">₹${test.price}</span>
+                        <span style="font-size: 15px; color: var(--text-muted); font-weight: 600;">Inclusive of Free Home Sample Collection & Digital NABL Report on WhatsApp</span>
+                    </div>
+
+                    <div style="font-size: 15px; line-height: 1.8; color: #334155; margin-bottom: 30px;">
+                        ${generate2000CharSeoDescription(test)}
+                    </div>
+
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button onclick="addToCart('${test.name}', ${test.price}, 'TEST')" class="btn-action-fill" style="max-width: 250px; padding: 16px; font-size: 16px;">Add to Cart & Book</button>
+                        <a href="https://wa.me/918209746239?text=${encodeURIComponent('Hi, I want to book ' + test.name + ' for ₹' + test.price + ' with free home collection.')}" target="_blank" class="btn-primary" style="padding: 16px 30px;"><i class="fab fa-whatsapp" style="font-size: 1.2em;"></i> Book Directly via WhatsApp</a>
+                    </div>
+                </div>
+            `;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Dynamic Test Search Grid with Clickable SEO Links
         const testGrid = document.getElementById('dynamic-test-grid');
         const instruction = document.getElementById('search-instruction');
         
@@ -933,16 +1033,17 @@ height:auto;">
             }
             
             filtered.forEach(test => {
-                let descHtml = generate2000CharSeoDescription(test);
                 testGrid.innerHTML += `
                     <div class="package-card" style="align-items: center; text-align: center; padding: 35px 25px;">
                         <div style="background:${test.bg}; color:${test.color}; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 20px;">
                             <i class="fa-solid ${test.icon}"></i>
                         </div>
-                        <h3 style="font-size: 18px; margin-bottom: 12px; min-height: 40px; display:flex; align-items:center; justify-content:center;">${test.name}</h3>
-                        ${descHtml}
+                        <h3 style="font-size: 18px; margin-bottom: 12px; min-height: 40px; display:flex; align-items:center; justify-content:center;">
+                            <a href="#test=${encodeURIComponent(test.name)}" style="color: var(--primary); transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--primary)'">${test.name}</a>
+                        </h3>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px; line-height: 1.5;">Normal Range: <strong>${test.nv}</strong>. Click test title above to open dedicated SEO test page with complete details & booking.</p>
                         <div style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 25px;">₹${test.price}</div>
-                        <button onclick="addToCart('${test.name}', ${test.price}, '${test.code}')" class="btn-action-fill" style="width: 100%;">Add to Cart</button>
+                        <button onclick="addToCart('${test.name}', ${test.price}, 'TEST')" class="btn-action-fill" style="width: 100%;">Add to Cart</button>
                     </div>`;
             });
         }
@@ -993,6 +1094,30 @@ height:auto;">
             let msg = `Hi Patel Diagnostic, I want to book these tests:\n\n${items}\n\nTotal Payable: ₹${total}`;
             window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
         }
+
+        // Populate Packages Grid
+        const packages = [
+            { code: "PDU FIT - 01", name: "Essential Vital", price: 899, old: 1678, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile (T3,T4,TSH)" },
+            { code: "PDU FIT - 02", name: "Comprehensive Care", price: 1399, old: 2336, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, HbA1c" },
+            { code: "PDU FIT - 03", name: "Advanced Health B12", price: 1699, old: 2716, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-B12" },
+            { code: "PDU FIT - 04", name: "Advanced Health Vit-D", price: 1999, old: 2816, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D" },
+            { code: "PDU BEST", name: "Ultimate Health Checkup", price: 2499, old: 4950, tests: "Blood Sugar Fasting, Lipid Profile, LFT, KFT, Thyroid Profile, Urine R/M, CBC, ESR, Vitamin-D, Vitamin-B12, HbA1c" },
+        ];
+        const pkgGrid = document.getElementById('package-grid');
+        packages.forEach(pkg => {
+            pkgGrid.innerHTML += `
+                <div class="package-card">
+                    <span class="tag">${pkg.code}</span>
+                    <h3>${pkg.name}</h3>
+                    <div class="includes" style="min-height: 85px;"><i class="fas fa-stethoscope" style="color: var(--accent);"></i> Includes: ${pkg.tests}</div>
+                    <div class="includes" style="color: var(--primary); font-weight: 600;"><i class="fas fa-home"></i> Free Home Collection</div>
+                    <div style="display:flex; align-items: baseline; gap: 10px; margin-top: 15px; margin-bottom: 20px;">
+                        <span style="font-size: 26px; font-weight: 800; color: var(--text-main);">₹${pkg.price}</span>
+                        <span style="text-decoration: line-through; color: #94a3b8; font-size: 15px;">₹${pkg.old}</span>
+                    </div>
+                    <button onclick="addToCart('${pkg.name}', ${pkg.price}, '${pkg.code}')" class="btn-action-fill">Add to Cart</button>
+                </div>`;
+        });
     </script>
 </body>
 </html>
