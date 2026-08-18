@@ -212,9 +212,20 @@
         .trust-banner span { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
 
         /* Hero Section */
-        .hero { background: linear-gradient(135deg, #0a438b 0%, #1369ce 100%); color: white; padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; min-width: 1200px; min-height: 480px; }
+        .hero { 
+            background: linear-gradient(135deg, #0a438b 0%, #1369ce 100%); 
+            color: white; 
+            padding: 0 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+            min-width: 1200px; 
+            min-height: 520px; 
+        }
         .hero::before { content: ''; position: absolute; top: -50%; left: -10%; width: 50%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); transform: rotate(30deg); }
-        .hero-content { max-width: 620px; position: relative; z-index: 2; }
+        .hero-content { max-width: 620px; position: relative; z-index: 2; padding: 40px 0; }
         .hero-content h1 { font-size: 46px; margin-bottom: 20px; line-height: 1.2; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .hero-content p { font-size: 18px; margin-bottom: 35px; opacity: 0.95; line-height: 1.6; font-weight: 300; font-family: 'Outfit', sans-serif; }
         .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
@@ -225,8 +236,24 @@
         .btn-secondary:hover { background: var(--primary-light); transform: translateY(-2px); }
 
         /* Hero Image Container Fit */
-        .hero-image-wrap { display: flex; align-items: center; justify-content: center; height: 110%; max-height: 480px; flex-shrink: 0; z-index: 2; position: relative; }
-        .hero-image-wrap img { height: 480px; width: auto; max-width: 480px; object-fit: contain; display: block; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); }
+        .hero-image-wrap { 
+            display: flex; 
+            align-items: flex-end; 
+            justify-content: center; 
+            height: 520px; 
+            flex-shrink: 0; 
+            z-index: 2; 
+            position: relative; 
+        }
+        .hero-image-wrap img { 
+            height: 500px; 
+            width: auto; 
+            max-width: 580px; 
+            object-fit: cover; 
+            display: block; 
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
 
         /* Section Titles */
         .section-header { text-align: left; margin: 70px 0 35px; border-left: 5px solid var(--accent); padding-left: 18px; }
@@ -894,7 +921,7 @@
             { name: "Insulin Fasting Test", price: 600, icon: "fa-microscope", bg: "#fef2f2", color: "#dc2626", nv: "2.6 - 24.9 µIU/mL", use: "evaluates fasting insulin resistance and helps investigate metabolic syndrome." },
             { name: "Iron Studies Test", price: 800, icon: "fa-vial", bg: "#f0fdf4", color: "#16a34a", nv: "Multiple parameters", use: "provides a complete evaluation of serum iron, TIBC, and ferritin saturation." },
             { name: "Kidney Function Test (KFT)", price: 600, icon: "fa-vial-virus", bg: "#f0fdf4", color: "#15803d", nv: "Multiple parameters", use: "evaluates renal metabolic filtration parameters including Urea, Creatinine, and Uric Acid." },
-            { name: "LDH Blood Test (Lactate Dehydration Test)", price: 400, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "140 - 280 U/L", use: "detects widespread cellular breakdown, anemia, liver tissue injury, or lung disease." },
+            { name: "LDH Blood Test (Lactate Dehydrogenase Test)", price: 400, icon: "fa-dna", bg: "#eff6ff", color: "#2563eb", nv: "140 - 280 U/L", use: "detects widespread cellular breakdown, anemia, liver tissue injury, or lung disease." },
             { name: "LDL Cholesterol Blood Test", price: 200, icon: "fa-virus", bg: "#fef2f2", color: "#991b1b", nv: "< 100 mg/dL", use: "measures 'bad' cholesterol directly linked to arterial plaque buildup." },
             { name: "Leptospira IgG & IgM Antibody Test", price: 1500, icon: "fa-shield-virus", bg: "#faf5ff", color: "#9333ea", nv: "Negative", use: "confirms Leptospirosis bacterial infection spread via contaminated water." },
             { name: "LH Hormone Test", price: 500, icon: "fa-vial-circle-check", bg: "#f0f9ff", color: "#0ea5e9", nv: "Varies by gender/cycle", use: "triggers ovulation assessment and evaluates pituitary reproductive health." },
