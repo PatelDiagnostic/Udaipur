@@ -280,7 +280,7 @@
         .section-header h2 { font-size: 32px; color: var(--primary); font-weight: 700; }
         .section-header p { color: var(--text-muted); margin-top: 6px; font-size: 16.5px; }
 
-        /* 2-ROW PACKAGES GRID: 6 COLUMNS BASE (Row 1: 3 cards x span 2 | Row 2: 2 cards x span 3) */
+        /* 2-ROW PACKAGES GRID: 6 COLUMNS BASE */
         #package-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -310,23 +310,63 @@
         .pkg-span-3-col { grid-column: span 2; }
         .pkg-span-2-col { grid-column: span 3; }
 
-        /* Package Image Component */
+        /* Full View Interactive Image Component */
         .package-image-wrap {
             width: 100%;
-            height: 185px;
-            background: #e2e8f0;
+            height: 220px;
+            background: #0f172a;
             position: relative;
+            cursor: pointer;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .package-image-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
         }
         .package-card:hover .package-image-wrap img {
-            transform: scale(1.04);
+            transform: scale(1.05);
+            opacity: 0.9;
         }
+
+        /* Hover Zoom Overlay Badge */
+        .zoom-overlay-hint {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            gap: 8px;
+            z-index: 2;
+        }
+        .zoom-pill {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+        .package-image-wrap:hover .zoom-overlay-hint {
+            opacity: 1;
+        }
+        .package-image-wrap:hover .zoom-pill {
+            transform: translateY(0);
+        }
+
         .package-badge-tag {
             position: absolute;
             top: 14px;
@@ -340,6 +380,7 @@
             border-radius: 20px;
             letter-spacing: 0.5px;
             border: 1px solid rgba(56, 189, 248, 0.4);
+            z-index: 3;
         }
 
         .package-body {
@@ -458,7 +499,7 @@
             transform: translateY(-1px); 
         }
 
-        /* SEO Rich Content Box */
+        /* SEO Informational Box */
         .seo-rich-box {
             background: white;
             border-radius: 16px;
@@ -569,6 +610,78 @@
             line-height: 1.6;
         }
 
+        /* Full View Lightbox Modal */
+        #image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            cursor: zoom-out;
+        }
+        #image-modal.active {
+            display: flex;
+        }
+        .modal-content-wrap {
+            position: relative;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: default;
+        }
+        #modal-img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            object-fit: contain;
+            background: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .modal-caption-bar {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            color: white;
+        }
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
         /* Footer */
         footer { background: #0f172a; color: white; padding: 70px 5% 30px; margin-top: 80px; font-family: 'Outfit', sans-serif; min-width: 1200px; }
         .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 50px; }
@@ -594,6 +707,21 @@
 <body>
 
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+    <!-- FULL IMAGE LIGHTBOX MODAL -->
+    <div id="image-modal" onclick="closeImageModal()">
+        <div class="modal-content-wrap" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeImageModal()">&times;</button>
+            <img id="modal-img" src="" alt="Full View Health Package Brochure">
+            <div class="modal-caption-bar">
+                <div>
+                    <div id="modal-title" class="modal-title">Package Name</div>
+                    <span id="modal-price" style="color: #38bdf8; font-weight: 800; font-size: 16px;">Price</span>
+                </div>
+                <button id="modal-book-btn" class="btn-primary" style="padding: 10px 22px; font-size: 14px;"><i class="fab fa-whatsapp"></i> Book This Package</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Sidebar Cart -->
     <div id="cart-sidebar">
@@ -694,7 +822,7 @@
         <section id="packages" style="margin-top: 60px;" data-aos="fade-up">
             <div class="section-header">
                 <h2>Our Preventive Health Checkup Packages</h2>
-                <p>Curated diagnostic profiles designed to detect lifestyle risks, deficiencies, and organ health baselines</p>
+                <p>Click on any package brochure image to open and view the full high-resolution test details</p>
             </div>
             
             <!-- 2-Row Enforced Grid: Top 3 Packages (span 2 each), Bottom 2 Packages (span 3 each) -->
@@ -927,6 +1055,7 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
+        // Cart Drawer Handlers
         function openCart() {
             document.getElementById('cart-sidebar').classList.add('active');
             document.getElementById('overlay').classList.add('active');
@@ -938,6 +1067,40 @@
             document.getElementById('overlay').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+
+        // Image Lightbox Modal Handlers
+        function openImageModal(imgSrc, title, price, code) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalPrice = document.getElementById('modal-price');
+            const bookBtn = document.getElementById('modal-book-btn');
+
+            modalImg.src = imgSrc;
+            modalTitle.innerText = title;
+            modalPrice.innerText = `₹${price} • 100% Free Doorstep Collection`;
+            bookBtn.onclick = function() {
+                let msg = `Hi Patel Diagnostic, I want to book the *${title}* (${code}) for ₹${price}. Please arrange a free home visit.`;
+                window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
+            };
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+                closeAll();
+            }
+        });
 
         // Cart State
         let cart = [];
@@ -977,12 +1140,12 @@
             window.open(`https://wa.me/918209746239?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Packages Data with Image Placeholders
+        // Packages Data with Full Image Viewer
         const packages = [
             { 
                 code: "PDU FIT - 01", 
                 name: "Essential Vital Package", 
-                image: "general-body-check-up-in-udaipur, health-check-up.jpg",
+                image: "pdu-fit-01.jpg",
                 imageAlt: "Essential Vital Health Package in Udaipur - Patel Diagnostic",
                 price: 899, 
                 old: 1678, 
@@ -1053,7 +1216,7 @@
             }
         ];
 
-        // Render Packages Cards
+        // Render Packages Cards with Click-to-Zoom Image Trigger
         const pkgGrid = document.getElementById('package-grid');
         packages.forEach(pkg => {
             let listHtml = pkg.tests.map(t => `<li><i class="fas fa-check-circle"></i> <span>${t}</span></li>`).join('');
@@ -1062,8 +1225,11 @@
             
             pkgGrid.innerHTML += `
                 <div class="package-card ${pkg.gridClass}">
-                    <div class="package-image-wrap">
+                    <div class="package-image-wrap" onclick="openImageModal('${pkg.image}', '${pkg.name}', ${pkg.price}, '${pkg.code}')" title="Click to view full brochure">
                         <img src="${pkg.image}" alt="${pkg.imageAlt}" onerror="this.src='1.png';">
+                        <div class="zoom-overlay-hint">
+                            <span class="zoom-pill"><i class="fas fa-search-plus"></i> View Full Brochure</span>
+                        </div>
                         <span class="package-badge-tag">${pkg.code}</span>
                     </div>
 
