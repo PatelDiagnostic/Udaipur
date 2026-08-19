@@ -399,17 +399,17 @@
         .process-box { background: white; padding: 30px 20px; border-radius: 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative; border: 1px solid rgba(0,0,0,0.04); transition: transform 0.3s ease; }
         .process-box:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
         .process-number { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 16px; border: 3px solid white; box-shadow: 0 4px 10px rgba(215, 25, 32, 0.2); }
-        .process-icon { width: 45px; height: 45px; margin: 15px auto 10px; color: var(--primary); }
+        .process-icon { width: 45px; height: 45px; margin: 15px auto 10px; }
         .process-box h4 { font-size: 18px; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--text-main); }
         .process-box p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
-        /* Feature Box Styles */
-        .feature-box { display: flex; gap: 20px; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s ease; align-items: center; }
-        .feature-box:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-color: var(--primary-light); }
-        .feature-icon { width: 70px; height: 70px; background: var(--primary-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--primary); }
-        .feature-icon svg { width: 35px; height: 35px; }
-        .feature-text h4 { font-size: 19px; margin-bottom: 6px; font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--text-main); }
-        .feature-text p { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+        /* Feature Box Styles - Icon Centered on Top */
+        .feature-box { display: flex; flex-direction: column; text-align: center; justify-content: center; background: white; padding: 30px 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s ease; align-items: center; }
+        .feature-box:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-color: var(--primary-light); transform: translateY(-4px); }
+        .feature-icon { width: 70px; height: 70px; background: var(--primary-light); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; flex-shrink: 0; }
+        .feature-icon svg { width: 36px; height: 36px; }
+        .feature-text h4 { font-size: 19px; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--text-main); }
+        .feature-text p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
         /* Service Areas - STRICTLY 1 ROW (3 Columns) */
         .area-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
@@ -619,7 +619,7 @@
                 <input type="text" id="testSearch" placeholder="Start typing... (e.g. Vitamin D, CBC, Thyroid, HbA1c)" autocomplete="off" onkeyup="filterTests()">
             </div>
             
-            <div id="search-instruction" style="text-align: center; color: var(--text-muted); font-size: 18px; margin-bottom: 40px; font-style: italic;">
+            <div id="search-instruction" style="text-align: center; color: var(--text-muted); font-size: 18px; margin-bottom: 20px; font-style: italic;">
                 <i class="fas fa-arrow-up" style="margin-bottom:12px; display:block; font-size:26px; color:var(--primary);"></i>
                 Type a test name above to view prices and add to your cart instantly. Click any test to open its dedicated view.
             </div>
@@ -631,7 +631,7 @@
         <div id="single-test-view" style="display: none; margin-top: 40px;"></div>
 
         <div id="home-bottom-blocks">
-            <section id="packages" style="margin-top: 90px;" data-aos="fade-up">
+            <section id="packages" style="margin-top: 35px;" data-aos="fade-up">
                 <div class="section-header">
                     <h2>Comprehensive Health Packages</h2>
                     <p>Specialized preventive profiles tailored for your complete well-being</p>
@@ -753,28 +753,79 @@
             </div>
             <div class="features-grid" data-aos="fade-up">
                 <div class="feature-box">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <linearGradient id="featGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stop-color="#3B82F6" />
+                              <stop offset="100%" stop-color="#1D4ED8" />
+                            </linearGradient>
+                          </defs>
+                          <path d="M3 9.5L12 3l9 6.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9.5z" fill="url(#featGrad1)" opacity="0.15"/>
+                          <path d="M3 9.5L12 3l9 6.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9.5z" stroke="url(#featGrad1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M12 11v6m-3-3h6" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="feature-text">
                         <h4>Home Collection</h4>
                         <p>Free sample collection from your home or office at your preferred time.</p>
                     </div>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4v2c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V6a4 4 0 0 0-4-4z"></path><path d="M16 10c0 2.2-1.8 4-4 4s-4-1.8-4-4"></path><path d="M4 22v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"></path><path d="M12 14v4"></path></svg></div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <linearGradient id="featGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stop-color="#8B5CF6" />
+                              <stop offset="100%" stop-color="#EC4899" />
+                            </linearGradient>
+                          </defs>
+                          <circle cx="12" cy="7" r="4" fill="url(#featGrad2)" opacity="0.2"/>
+                          <circle cx="12" cy="7" r="4" stroke="url(#featGrad2)" stroke-width="2"/>
+                          <path d="M5.5 21v-2a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v2" stroke="url(#featGrad2)" stroke-width="2" stroke-linecap="round"/>
+                          <path d="M12 14v4m-2-2h4" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="feature-text">
                         <h4>Trained Professionals</h4>
                         <p>Our phlebotomists are highly trained to ensure painless blood withdrawal.</p>
                     </div>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path><path d="M12 6V3"></path></svg></div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <linearGradient id="featGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stop-color="#10B981" />
+                              <stop offset="100%" stop-color="#06B6D4" />
+                            </linearGradient>
+                          </defs>
+                          <path d="M10 2v7.5L5.5 17A2 2 0 0 0 7.2 20h9.6a2 2 0 0 0 1.7-3L14 9.5V2" fill="url(#featGrad3)" opacity="0.15"/>
+                          <path d="M10 2v7.5L5.5 17A2 2 0 0 0 7.2 20h9.6a2 2 0 0 0 1.7-3L14 9.5V2" stroke="url(#featGrad3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M9 2h6" stroke="url(#featGrad3)" stroke-width="2" stroke-linecap="round"/>
+                          <path d="M9 15l2 2 4-4" stroke="#10B981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <div class="feature-text">
                         <h4>Accurate Results</h4>
                         <p>Samples are processed in certified laboratory partners using advanced equipment.</p>
                     </div>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M9 11l2 2 4-4"></path><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <linearGradient id="featGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stop-color="#F59E0B" />
+                              <stop offset="100%" stop-color="#EF4444" />
+                            </linearGradient>
+                          </defs>
+                          <rect x="5" y="2" width="14" height="20" rx="3" fill="url(#featGrad4)" opacity="0.15"/>
+                          <rect x="5" y="2" width="14" height="20" rx="3" stroke="url(#featGrad4)" stroke-width="2"/>
+                          <path d="M9 7h6M9 11h6" stroke="url(#featGrad4)" stroke-width="2" stroke-linecap="round"/>
+                          <path d="M9 15.5l2 2 4-4" stroke="#25D366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <div class="feature-text">
                         <h4>Smart Digital Reports</h4>
                         <p>Access your medical reports online via WhatsApp promptly.</p>
