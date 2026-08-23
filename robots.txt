@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://pateldiagnostic.github.io/Udaipur/sitemap.xml
